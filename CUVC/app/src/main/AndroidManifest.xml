@@ -12,6 +12,9 @@
         android:theme="@style/Theme.CUVC"
         tools:targetApi="31">
         <activity
+            android:name=".register"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
