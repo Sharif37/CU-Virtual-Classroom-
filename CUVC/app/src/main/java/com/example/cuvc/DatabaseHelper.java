@@ -1,4 +1,4 @@
-package com.example.cuvc;
+package com.example.cuvc ;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,125 +6,137 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import androidx.annotation.Nullable;
+
+
 public class DatabaseHelper extends SQLiteOpenHelper {
-    // Database Version
-    private static final int DATABASE_VERSION = 1;
 
-    // Database Name
-    private static final String DATABASE_NAME = "user_db";
+    public static final int version=4 ;
+    public static final String databaseName="Classroom";
+    public static final String tableName="user";
+    public static final String col1="ID" ;
+    public static final String col2="Name" ;
+    public static final String col3="Email" ;
+    public static final String col4="PassWord" ;
 
-    // Table Names
-    private static final String TABLE_USERS = "users";
 
-    // Column names
-    private static final String COLUMN_ID = "id";
-    private static final String COLUMN_NAME = "name";
-    private static final String COLUMN_EMAIL = "email";
-    private static final String COLUMN_PASSWORD = "password";
+// table 2
 
-    // Create table SQL query
-    private static final String CREATE_TABLE_USERS =
-            "CREATE TABLE " + TABLE_USERS + "("
-                    + COLUMN_ID + " INTEGER PRIMARY KEY ,"
-                    + COLUMN_NAME + " TEXT,"
-                    + COLUMN_EMAIL + " TEXT,"
-                    + COLUMN_PASSWORD + " TEXT"
-                    + ")";
 
-    //public DatabaseHelper(Context context) {
-        //super(context, DATABASE_NAME, null, DATABASE_VERSION);
-    //}
-    public DatabaseHelper(Context context){
-        super(context,DATABASE_NAME,null,DATABASE_VERSION);
+    public static final int version1=1 ;
+    public static final String tableName2="sessions";
+
+    public static final String col11="ID" ;
+    public static final String col22="session_id" ;
+    public static final String col33="login_time" ;
+    public static final long   session_timeout=30*60*60 ;
+
+    String CreateTable="CREATE TABLE " + tableName+ "("
+            + col1 + " INTEGER PRIMARY KEY ,"
+            + col2 + " TEXT,"
+            + col3 + " TEXT,"
+            + col4 + " TEXT"
+            + ")";
+
+    String CreateTable2="CREATE TABLE " + tableName2 + "("
+            + col11 + " INTEGER  ,"
+            + col22 + " TEXT ,"
+            + col33 + " INTEGER "
+            + ")" ;
+
+      DatabaseHelper(@Nullable Context context) {
+        super(context, databaseName, null, version);
     }
+
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Creating table
-        db.execSQL(CREATE_TABLE_USERS);
+        db.execSQL(CreateTable);
+        db.execSQL(CreateTable2);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Drop older table if exists
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
-
-        // Create tables again
+        db.execSQL("DROP TABLE IF EXISTS "+tableName);
+        db.execSQL("DROP TABLE IF EXISTS "+tableName2);
         onCreate(db);
-    }
 
+    }
 
     public boolean insertUser(String id,String name, String email, String password) {
         // Get writeable database
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_ID,id);
-        values.put(COLUMN_NAME, name);
-        values.put(COLUMN_EMAIL, email);
-        values.put(COLUMN_PASSWORD, password);
+        values.put(col1,id);
+        values.put(col2, name);
+        values.put(col3, email);
+        values.put(col4, password);
 
         // Inserting row
 
-        long result= db.insert(TABLE_USERS, null, values);
+        long result= db.insert(tableName, null, values);
         db.close();
+
         if(result==-1)
-       {
-           return false ;
-       }
-       else {
-           return true ;
-       }
+        {
+            return false ;
+        }
+        else {
+            return true ;
+        }
         // Close database connection
 
     }
 
 
     public boolean checkUser(String id, String password) {
+
         // Array of columns to fetch
-        String[] columns = {
-                COLUMN_ID
-        };
+        String[] projection ={col1};
         SQLiteDatabase db = this.getReadableDatabase();
         // Selection criteria
-        String selection = COLUMN_ID + " = ?" + " AND " + COLUMN_PASSWORD + " = ?";
+        String selection = col1 + " = ?" + " AND " + col4 + " = ?";
 
         // Selection arguments
         String[] selectionArgs = {id, password};
 
-        // Query user table with conditions
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_id FROM user WHERE user_email = 'jack
-         * **/
-        Cursor cursor = db.query(TABLE_USERS, //Table to query
-                columns, //columns to return
-                selection, //columns for the WHERE clause
-                selectionArgs, //The values for the WHERE clause
-                null, //group the rows
-                null, //filter by row groups
-                null); //The sort order
+
+       Cursor cursor=db.query(tableName,projection,selection,selectionArgs,null,null,null);
         int cursorCount = cursor.getCount();
-        //cursor.close();
-       // db.close();
+        cursor.close();
+        db.close();
         if (cursorCount > 0) {
             return true;
         }
 
         return false;
     }
-  public boolean checkuserNameandPassword(String id,String password)
-  {
-      SQLiteDatabase db=this.getWritableDatabase();
-      Cursor cursor=db.rawQuery("select * from users where id=? and password=? ", new String[]{id,password});
-      if(cursor.getCount()>0)
-      {
-          return true ;
-      }
-      else
-          return false ;
-  }
+    public boolean checkUserNameAndPassword(String id,String password)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cursor=db.rawQuery("select * from user where ID=? and PassWord=? ", new String[]{id,password});
+        if(cursor.getCount()>0)
+        {
+            return true ;
+        }
+        else
+            return false ;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
