@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         sManager=new sessionManager(this);
 
              if (sManager.getSessionId()) {
-                 Intent intent = new Intent(this, HomeActivity.class);
+                 Intent intent = new Intent(this, Home.class);
                  startActivity(intent);
 
 

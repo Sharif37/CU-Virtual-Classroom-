@@ -5,13 +5,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final int version=4 ;
+    private Context context;
+    //table user
+    public static final int version=8 ;
     public static final String databaseName="Classroom";
     public static final String tableName="user";
     public static final String col1="ID" ;
@@ -20,16 +23,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String col4="PassWord" ;
 
 
-// table 2
+// table sessions
 
 
-    public static final int version1=1 ;
     public static final String tableName2="sessions";
 
     public static final String col11="ID" ;
     public static final String col22="session_id" ;
     public static final String col33="login_time" ;
     public static final long   session_timeout=30*60*60 ;
+
+
+    //table classroom
+    public static final String tableClassroom ="Class";
+    public static final String  class_Id ="classID";
+    public static final String  Class_Name ="ClassName";
+    public static final String  class_description ="Description";
+    public static final String  class_adminID ="AdminID";
+    public static final String  class_key ="key";
+
+
+
+    // table admin
+    public static final String tableAdmin="Admin" ;
+    public static final String admin_Id="AdminID" ;
+
+    public static final String admin_Name="Name" ;
+    public static final String admin_Email="Email" ;
+
 
     String CreateTable="CREATE TABLE " + tableName+ "("
             + col1 + " INTEGER PRIMARY KEY ,"
@@ -44,8 +65,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + col33 + " INTEGER "
             + ")" ;
 
+
+    String Create_Class_table="CREATE TABLE "+ tableClassroom + "(" + class_Id + " Text primary key ,"+
+             Class_Name + " Text ," + class_description + " Text ," + class_adminID +" Text ," + class_key +"  Text  unique , "+ " FOREIGN Key "+ "(" + class_adminID +")"+
+            " REFERENCES  "+ tableName + "("+ col1 + ")" +")" ;
+
+
+    String Create_Admin_table="CREATE TABLE "+ tableAdmin+ "(" + admin_Id + " Text primary key ,"+
+         admin_Name + " Text ," + admin_Email + " Text "+ ")" ;
+
       DatabaseHelper(@Nullable Context context) {
-        super(context, databaseName, null, version);
+
+          super(context, databaseName, null, version);
+          this.context=context;
     }
 
 
@@ -54,6 +86,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CreateTable);
         db.execSQL(CreateTable2);
+        db.execSQL(Create_Class_table);
+        db.execSQL(Create_Admin_table);
 
     }
 
@@ -61,6 +95,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+tableName);
         db.execSQL("DROP TABLE IF EXISTS "+tableName2);
+        db.execSQL("DROP TABLE IF EXISTS "+tableClassroom);
+        db.execSQL("DROP TABLE IF EXISTS "+tableAdmin);
+
         onCreate(db);
 
     }
@@ -127,9 +164,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public void createClassroom(String  classId,String className,String classDescription, String adminId,String key)
+    {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //insert new session into database
+        ContentValues values=new ContentValues();
+
+        values.put(class_Id,classId);
+        values.put(Class_Name,className);
+        values.put(class_description,classDescription);
+        values.put(class_adminID,adminId);
+        values.put(class_key,key);
 
 
 
+        long newRowId = db.insert(tableClassroom,null,values);
+
+        if (newRowId == -1) {
+            Toast.makeText( context, "Error saving class to database", Toast.LENGTH_SHORT).show();
+
+        } else {
+            Toast.makeText(context, "Class created successfully", Toast.LENGTH_SHORT).show();
+             // Close the activity and return to the previous one
+        }
+    }
+
+    public void createAdminrule(String  adminId,String adminName,String adminEmail)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+
+        //insert new session into database
+        ContentValues values=new ContentValues();
+
+        values.put(admin_Id,adminId);
+        values.put(admin_Name,adminName);
+        values.put(admin_Email,adminEmail);
+
+        db.insert(tableAdmin,null,values);
+    }
 
 
 

@@ -3,11 +3,9 @@ package com.example.cuvc;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,8 +15,8 @@ import com.google.android.material.navigation.NavigationView;
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mDrawerToggle;
+    public  DrawerLayout mDrawerLayout;
+    public  ActionBarDrawerToggle mDrawerToggle;
        sessionManager sm ;
 
     @Override
@@ -27,7 +25,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_home);
 
         // Find the DrawerLayout in the layout
-        mDrawerLayout = findViewById(R.id.draweLayout);
+        mDrawerLayout = findViewById(R.id.drawerLayout);
 
 
         NavigationView nav= findViewById(R.id.navigationView);
@@ -69,7 +67,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Intent intent ;
         if(item.getItemId()==R.id.opClassroom)
         {
-            intent=new Intent(this,Classroom.class) ;
+            intent=new Intent(this, CreateClassroom.class) ;
             startActivity(intent);
 
         }

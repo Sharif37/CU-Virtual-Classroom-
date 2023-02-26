@@ -1,22 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bi"
-    tools:context=".Classroom" >
+    android:layout_height="match_parent">
 
-    <TextView
+    <!-- Banner section -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/CreateClass_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Classroom"
-        android:textSize="30dp"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:textStyle="bold"
-        />
+        android:layout_height="100dp"
+        android:background="@drawable/img_graduation"
+        android:padding="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+    <!-- Description section -->
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Post section -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/post_input"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Type your post here..." />
+
+        <ImageView
+            android:id="@+id/file_icon"
+            android:layout_marginLeft="10dp"
+            android:background="@color/blue"
+            android:layout_width="wrap_content"
+            android:layout_height="43dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/baseline_attach_file_24" />
+
+        <Button
+            android:id="@+id/post_button"
+            android:text="Post"
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:background="#007bff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</RelativeLayout>

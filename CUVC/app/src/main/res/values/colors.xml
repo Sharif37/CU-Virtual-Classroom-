@@ -13,6 +13,19 @@
         <color name="colorWhite">#FFFFFF</color>
         <color name="colorRed">#C11515</color>
 
+
+    <color name="colorPrimaryDark">#3262c4</color>
+
+    <color name="colorTeal_200">#80CBC4</color>
+    <color name="colorTeal">#28a99e</color>
+
+    <color name="material_deep_purple">#673AB7</color>
+    <color name="material_pink">#E91E63</color>
+
+
+    <color name="material_green">#4CAF50</color>
+    <color name="material_blue">#2196F3</color>
+    <color name="background_color">#fcfcfc</color>
         
 
 

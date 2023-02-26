@@ -12,10 +12,31 @@
         android:theme="@style/Theme.CUVC"
         tools:targetApi="31">
         <activity
+            android:name=".Display_class_key"
+            android:exported="false" />
+        <activity
+            android:name=".Class_Member"
+            android:exported="false" />
+        <activity
+            android:name=".TransportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EventActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ResourceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".classroomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
             android:name=".profile"
             android:exported="false" />
         <activity
-            android:name=".Classroom"
+            android:name=".CreateClassroom"
             android:exported="false" />
         <activity
             android:name=".register"
