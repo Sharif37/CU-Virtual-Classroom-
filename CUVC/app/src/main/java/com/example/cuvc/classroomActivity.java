@@ -1,34 +1,102 @@
 package com.example.cuvc;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import static android.content.ContentValues.TAG;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class classroomActivity extends AppCompatActivity {
 
-    Toolbar toolbar ;
+    Toolbar toolbar;
+    private PostViewModel postViewModel;
+    TextView inputPost;
+    LoginActivity login;
+    SharedPreferences preferences;
+    private List<Post> postList;
+    private RecyclerView recyclerView;
+    private PostAdapter postAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //getSupportActionBar().hide();
+        setTitle("ClassRoom");
         setContentView(R.layout.activity_classroom);
-
+        login = new LoginActivity();
         toolbar = findViewById(R.id.CreateClass_toolbar);
-
+        TextView toolbarTitle = findViewById(R.id.toolbar_title);
+        inputPost = findViewById(R.id.post_input);
         //set banner
-        setClassNameAndDescription();
+        //setClassNameAndDescription();
+        //set banner from firebase
 
+        preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        String className = preferences.getString("className", "");
+        String classDescription = preferences.getString("classDescription", "");
+        String currentUser = preferences.getString("currentUser", "");
+        //method to check is it admin or not
+        isYouAdmin(currentUser);
+        toolbarTitle.setText(className + "\n        " + classDescription);
+
+        // initialize RecyclerView and PostAdapter
+        recyclerView = findViewById(R.id.post_recycler_view_in_ClassActivity);
+        postAdapter = new PostAdapter(postList,this);
+
+        // set up RecyclerView
+
+        recyclerView.setAdapter(postAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // initialize PostViewModel
+         postViewModel = new ViewModelProvider(this).get(PostViewModel.class);
+
+
+        // observe the LiveData object in the PostViewModel to retrieve the posts from the Firebase Realtime Database
+        postViewModel.getPosts().observe(this, new Observer<List<Post>>() {
+            @Override
+            public void onChanged(List<Post> posts) {
+                postAdapter.setPostList(posts);
+            }
+        });
+
+
+        inputPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(classroomActivity.this,Post_Activity.class );
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -36,21 +104,56 @@ public class classroomActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_bar, menu);
-        getMenuInflater().inflate(R.menu.menu_setting, menu);
+
+        // Check if isAdmin is true
+        boolean isAdmin = preferences.getBoolean("isAdmin", false);
+        //Toast.makeText(this, isAdmin+"", Toast.LENGTH_SHORT).show();
+        if (isAdmin) {
+            // If user is an admin, show the menu_setting option
+            getMenuInflater().inflate(R.menu.menu_setting, menu);
+        }
 
         return true;
     }
 
+
+    public void isYouAdmin(String id) {
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users");
+        Query query = userRef.orderByChild("id").equalTo(id);
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        boolean isAdmin = snapshot.child("admin").getValue(Boolean.class);
+                        editor.putBoolean("isAdmin", isAdmin);
+                        editor.apply();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e(TAG, "isYouAdmin:onCancelled", error.toException());
+            }
+        });
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id=item.getItemId();
-        Intent intent ;
-        if (id==R.id.peopleId) {
+        int id = item.getItemId();
+        Intent intent;
+        if (id == R.id.peopleId) {
             Classmates();
             return true;
         }
-        if (id==R.id.action_settings) {
-           intent = new Intent(this, Display_class_key.class);
+        if (id == R.id.admin_action_settings) {
+            intent = new Intent(this, Display_class_key.class);
             startActivity(intent);
             finish();
             return true;
@@ -61,30 +164,30 @@ public class classroomActivity extends AppCompatActivity {
 
     private void Classmates() {
 
-        Intent intent=new Intent(this,Class_Member.class);
+        Intent intent = new Intent(this, Class_Member.class);
         startActivity(intent);
-        
+
     }
 
 
     @SuppressLint("Range")
-    public void setClassNameAndDescription()
-    {
+    public void setClassNameAndDescription() {
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
-        SQLiteDatabase db=databaseHelper.getReadableDatabase() ;
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
         String query = "SELECT ClassName,Description FROM Class LIMIT 1";
         Cursor cursor = db.rawQuery(query, null);
-        String name =null;
-        String description=null ;
+        String name = null;
+        String description = null;
         if (cursor != null && cursor.moveToFirst()) {
             name = cursor.getString(cursor.getColumnIndex("ClassName"));
             description = cursor.getString(cursor.getColumnIndex("Description"));
             cursor.close();
         }
 
-        toolbar.setTitle(name+"\n"+description);
+        toolbar.setTitle(name + "\n" + description);
 
     }
+
 
 }
