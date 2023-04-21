@@ -64,6 +64,7 @@ public class Class_Member extends AppCompatActivity {
         memberListView.setAdapter(memberListAdapter);
 
 
+
     }
 
 
@@ -80,6 +81,7 @@ public class Class_Member extends AppCompatActivity {
                     Member member = new Member(memberId, memberName);
 
                     memberList.add(member);
+
                 }
 
                 memberListAdapter.notifyDataSetChanged();

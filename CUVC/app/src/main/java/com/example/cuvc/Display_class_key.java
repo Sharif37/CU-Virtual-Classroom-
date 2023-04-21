@@ -67,10 +67,5 @@ public class Display_class_key extends AppCompatActivity {
 
 
 
-
-
-
-
-
     }
 }

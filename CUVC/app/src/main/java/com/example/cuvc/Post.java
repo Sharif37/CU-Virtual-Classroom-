@@ -92,6 +92,22 @@ public class Post implements Parcelable {
         return userId;
     }
 
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
+
+    public String getImgFileName() {
+        return imgFileName;
+    }
+
+    public void setImgFileName(String imgFileName) {
+        this.imgFileName = imgFileName;
+    }
+
+    public  String  getPostId() {
+        return postId;
+    }
+
     public void setUserId(String userId) {
         this.userId = userId;
     }
@@ -126,5 +142,15 @@ public class Post implements Parcelable {
         dest.writeLong(timestamp);
         dest.writeString(fileName);
         dest.writeString(imgFileName);
+    }
+
+    private String fileType;
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
     }
 }

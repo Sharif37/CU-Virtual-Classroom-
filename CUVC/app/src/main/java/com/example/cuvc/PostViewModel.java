@@ -1,9 +1,9 @@
 package  com.example.cuvc ;
 
+
+import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
@@ -22,14 +22,26 @@ import java.util.List;
 public class PostViewModel extends ViewModel {
 
     private MutableLiveData<List<Post>> mPosts;
+    private String classCode;
 
 
 
+    public PostViewModel() {
+        // empty constructor
+    }
+
+    public PostViewModel(SharedPreferences sharedPreferences) {
+        // Retrieve the value of classCode from SharedPreferences
+        classCode = sharedPreferences.getString("classCode", "");
+        System.out.println("ClassCode: "+classCode);
+    }
 
     public LiveData<List<Post>> getPosts() {
         if (mPosts == null) {
             mPosts = new MutableLiveData<>();
-            loadPosts();
+            if (classCode.equals("hd03h9")) {
+                loadPosts();
+            }
         }
         return mPosts;
     }
@@ -38,8 +50,12 @@ public class PostViewModel extends ViewModel {
 
 
 
+
+
+
+
     private void loadPosts() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("posts");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("class/"+classCode+"/posts");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -48,7 +64,6 @@ public class PostViewModel extends ViewModel {
                     Post post = postSnapshot.getValue(Post.class);
                     posts.add(post);
                 }
-                mPosts.postValue(posts);
                 mPosts.setValue(posts);
             }
 
@@ -60,4 +75,7 @@ public class PostViewModel extends ViewModel {
             }
         });
     }
+
+
+
 }

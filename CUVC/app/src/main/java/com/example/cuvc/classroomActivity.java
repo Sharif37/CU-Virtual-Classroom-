@@ -2,24 +2,23 @@ package com.example.cuvc;
 
 import static android.content.ContentValues.TAG;
 
-import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,7 +29,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class classroomActivity extends AppCompatActivity {
@@ -38,11 +36,11 @@ public class classroomActivity extends AppCompatActivity {
     Toolbar toolbar;
     private PostViewModel postViewModel;
     TextView inputPost;
-    LoginActivity login;
-    SharedPreferences preferences;
+     SharedPreferences preferences;
     private List<Post> postList;
     private RecyclerView recyclerView;
     private PostAdapter postAdapter;
+    static String classkey ;
 
 
 
@@ -52,7 +50,6 @@ public class classroomActivity extends AppCompatActivity {
         //getSupportActionBar().hide();
         setTitle("ClassRoom");
         setContentView(R.layout.activity_classroom);
-        login = new LoginActivity();
         toolbar = findViewById(R.id.CreateClass_toolbar);
         TextView toolbarTitle = findViewById(R.id.toolbar_title);
         inputPost = findViewById(R.id.post_input);
@@ -64,6 +61,8 @@ public class classroomActivity extends AppCompatActivity {
         String className = preferences.getString("className", "");
         String classDescription = preferences.getString("classDescription", "");
         String currentUser = preferences.getString("currentUser", "");
+         classkey=preferences.getString("classCode","");
+
         //method to check is it admin or not
         isYouAdmin(currentUser);
         toolbarTitle.setText(className + "\n        " + classDescription);
@@ -77,11 +76,22 @@ public class classroomActivity extends AppCompatActivity {
         recyclerView.setAdapter(postAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+
+
+
+
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        postViewModel = new PostViewModel(sharedPreferences);
+
         // initialize PostViewModel
-         postViewModel = new ViewModelProvider(this).get(PostViewModel.class);
+        // postViewModel = new ViewModelProvider(this).get(PostViewModel.class);
 
 
         // observe the LiveData object in the PostViewModel to retrieve the posts from the Firebase Realtime Database
+
+
         postViewModel.getPosts().observe(this, new Observer<List<Post>>() {
             @Override
             public void onChanged(List<Post> posts) {
@@ -97,6 +107,7 @@ public class classroomActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
 
     }
@@ -129,7 +140,11 @@ public class classroomActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = preferences.edit();
 
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        boolean isAdmin = snapshot.child("admin").getValue(Boolean.class);
+                        boolean isAdmin = false;
+                        if (snapshot.child("admin").getValue() != null) {
+                            isAdmin = snapshot.child("admin").getValue(Boolean.class);
+                        }
+
                         editor.putBoolean("isAdmin", isAdmin);
                         editor.apply();
                     }
@@ -169,8 +184,9 @@ public class classroomActivity extends AppCompatActivity {
 
     }
 
+// set classname and description using sqlite
 
-    @SuppressLint("Range")
+  /*  @SuppressLint("Range")
     public void setClassNameAndDescription() {
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
@@ -188,6 +204,8 @@ public class classroomActivity extends AppCompatActivity {
         toolbar.setTitle(name + "\n" + description);
 
     }
+
+   */
 
 
 }

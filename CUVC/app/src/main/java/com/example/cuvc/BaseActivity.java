@@ -40,6 +40,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+
     }
 
     @Override

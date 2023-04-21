@@ -19,28 +19,43 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Enter_Class extends AppCompatActivity {
 
+
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     EditText classCode ;
     Button joinButton ;
+    SharedPreferences preferences;
     Intent intent ;
     classroomActivity obj ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_class);
+
         classCode =findViewById(R.id.editTextClassCode);
         joinButton=findViewById(R.id.buttonJoinClass);
         obj=new classroomActivity();
+
+        preferences = getSharedPreferences("MyPrefs",MODE_PRIVATE);
+        String currentUser = preferences.getString("currentUser", "");
+
+
+
+
         joinButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 String Code = classCode.getText().toString();
                checkClassKey(Code);
-                Toast.makeText(Enter_Class.this, Code+"", Toast.LENGTH_SHORT).show();
+               databaseReference.child("users").child(currentUser).child("classkey").setValue(Code);
+
             }
         });
 
     }
+
+
 
     public void checkClassKey(String code) {
 
@@ -67,6 +82,8 @@ public class Enter_Class extends AppCompatActivity {
                     editor.putString("className", className);
                     editor.putString("classDescription", classDescription);
                     editor.apply();
+
+
                     // Start the classroom activity
                     Intent intent = new Intent(Enter_Class.this, classroomActivity.class);
                     intent.putExtra("className", className);

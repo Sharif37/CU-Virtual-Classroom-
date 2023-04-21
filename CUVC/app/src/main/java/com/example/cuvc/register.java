@@ -70,6 +70,8 @@ public class register extends AppCompatActivity implements DatabaseHelper.OnData
                 String email = userEmail.getText().toString();
                 String pass = userPassWord.getText().toString();
                 String repass = userRePassWord.getText().toString();
+
+
                 if (id.equals("") || pass.equals("") || name.isEmpty() || email.isEmpty() || repass.isEmpty()) {
                     Toast.makeText(register.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 } else if (!isEmailValid(email)) {

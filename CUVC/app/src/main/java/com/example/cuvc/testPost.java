@@ -10,5 +10,6 @@ public class testPost extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycler_view_layout);
+
     }
 }
