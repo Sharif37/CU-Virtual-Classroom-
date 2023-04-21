@@ -1,0 +1,24 @@
+\section{Implementation}\label{sec:imp}
+Give some code snippet of each component you outlined in your System architecture. Some DDL query example. Use the listing environment for writing code. 
+Listing~\ref{list:sql} shows an SQL query. 
+
+\begin{lstlisting}[caption={A SQL query example}, label=list:sql, captionpos=b,
+           backgroundcolor=\color{white},
+           language=SQL,
+           breaklines=true,
+           frame=single,
+           showspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           rulecolor=\color{red},
+           keywordstyle=\color{blue},
+           commentstyle=\color{gray}
+        ]
+select distinct name
+from instructor
+where salary > some( select salary
+			from instructor
+			where dept_name='CSE');
+\end{lstlisting}
+\clearpage
