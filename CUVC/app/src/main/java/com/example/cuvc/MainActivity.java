@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.google.firebase.FirebaseApp;
+
 public class MainActivity extends AppCompatActivity {
 
     DatabaseHelper db ;
@@ -19,11 +21,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //FirebaseApp.initializeApp(this);
 
 
         sManager=new sessionManager(this);
 
-             if (sManager.getSessionId()) {
+             if (sManager.exitSession()) {
                  Intent intent = new Intent(this, Home.class);
                  startActivity(intent);
 
@@ -32,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
                  Intent intent = new Intent(this, LoginActivity.class);
                  startActivity(intent);
              }
-
-
 
 
     }

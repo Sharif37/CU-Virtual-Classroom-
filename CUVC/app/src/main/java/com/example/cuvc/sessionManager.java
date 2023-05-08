@@ -65,7 +65,7 @@ public class sessionManager {
     }
 
 
-    public boolean getSessionId() {
+    public boolean exitSession() {
        // Toast.makeText(mcontext, "getSessionId Method", Toast.LENGTH_SHORT).show();
       SQLiteDatabase db =dbHelper.getReadableDatabase() ;
       String query="SELECT COUNT(*) FROM "+tableName;

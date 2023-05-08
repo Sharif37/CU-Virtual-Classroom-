@@ -5,6 +5,7 @@ import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -33,6 +34,7 @@ public class Home extends BaseActivity implements View.OnClickListener {
         TransportCardView.setOnClickListener(this);
 
 
+
     }
 
     @Override
@@ -52,8 +54,17 @@ public class Home extends BaseActivity implements View.OnClickListener {
         switch(v.getId())
         {
             case R.id.ClassroomCardview:
-                 intent = new Intent(Home.this, classroomActivity.class);
-                startActivity(intent);
+                SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                String classCode = preferences.getString("classCode", "");
+
+                if (classCode != null && !classCode.isEmpty()) {
+                    // If the user has already entered a valid code, launch the class activity
+                     intent = new Intent(Home.this, classroomActivity.class);
+                    startActivity(intent);
+                } else {
+                    intent = new Intent(Home.this, Enter_Class.class);
+                    startActivity(intent);
+                }
                 break ;
             case R.id.ResourceCardView:
                  intent = new Intent(Home.this, ResourceActivity.class);

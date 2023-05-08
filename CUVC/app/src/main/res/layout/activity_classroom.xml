@@ -1,21 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- Banner section -->
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/CreateClass_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:background="@drawable/img_graduation"
-        android:padding="5dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+         >
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:maxLines="2"
+        />
+    </androidx.appcompat.widget.Toolbar >
 
     <!-- Description section -->
+    <!-- RecyclerView -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/CreateClass_toolbar"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/post_recycler_view_in_ClassActivity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp"
+
+
+            />
+
+
+    </LinearLayout>
 
 
 
@@ -27,30 +53,25 @@
         android:layout_alignParentBottom="true"
         android:padding="16dp">
 
-        <EditText
+        <TextView
             android:id="@+id/post_input"
             android:layout_weight="1"
-            android:layout_width="0dp"
+            android:layout_width="10dp"
+            android:textColor="@color/blue"
+            android:padding="10dp"
+            android:background="@drawable/textviewboarder"
             android:layout_height="wrap_content"
             android:hint="Type your post here..." />
 
-        <ImageView
-            android:id="@+id/file_icon"
-            android:layout_marginLeft="10dp"
-            android:background="@color/blue"
+        <ProgressBar
+            android:id="@+id/spinner"
             android:layout_width="wrap_content"
-            android:layout_height="43dp"
-            android:layout_marginRight="16dp"
-            android:src="@drawable/baseline_attach_file_24" />
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
 
-        <Button
-            android:id="@+id/post_button"
-            android:text="Post"
-            android:textSize="18sp"
-            android:textColor="#ffffff"
-            android:background="#007bff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
+
     </LinearLayout>
 
 </RelativeLayout>
