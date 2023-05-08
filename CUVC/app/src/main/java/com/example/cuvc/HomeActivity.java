@@ -22,7 +22,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        //setContentView(R.layout.activity_home);
 
         // Find the DrawerLayout in the layout
         mDrawerLayout = findViewById(R.id.drawerLayout);
@@ -91,3 +91,4 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return false ;
     }
 }
+

@@ -2,6 +2,7 @@ package com.example.cuvc;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -33,7 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
         nav.setNavigationItemSelectedListener(this);
 
 
-        //Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "hello ", Toast.LENGTH_SHORT).show();
         // Set up the ActionBarDrawerToggle with the DrawerLayout
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.OpenDrawer, R.string.CloseDrawer);
         mDrawerLayout.addDrawerListener(mDrawerToggle);
@@ -94,7 +95,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
         }
         if(item.getItemId()==R.id.joinClassroom)
         {
-
+          
 
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
