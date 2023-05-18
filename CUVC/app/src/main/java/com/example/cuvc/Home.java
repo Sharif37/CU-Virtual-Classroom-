@@ -1,6 +1,5 @@
 package com.example.cuvc;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -10,8 +9,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
-import com.google.android.material.navigation.NavigationView;
 
 
 public class Home extends BaseActivity implements View.OnClickListener {
@@ -23,9 +20,10 @@ public class Home extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       // setContentView(R.layout.activity_home);
         // Find the DrawerLayout in the layout
 
-        Toast.makeText(this, "hello from home ", Toast.LENGTH_SHORT).show();
+        drawerLayout = findViewById(R.id.drawerLayout);
         classRoomCardView = findViewById(R.id.ClassroomCardview);
         ResourceCardView = findViewById(R.id.ResourceCardView);
         EventCardView= findViewById(R.id.EventCardView);
@@ -36,13 +34,6 @@ public class Home extends BaseActivity implements View.OnClickListener {
         ResourceCardView.setOnClickListener(this);
         EventCardView.setOnClickListener(this);
         TransportCardView.setOnClickListener(this);
-
-
-
-
-
-
-
 
 
 
@@ -61,7 +52,7 @@ public class Home extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-           Intent intent ;
+        Intent intent ;
         switch(v.getId())
         {
             case R.id.ClassroomCardview:
@@ -70,7 +61,7 @@ public class Home extends BaseActivity implements View.OnClickListener {
 
                 if (classCode != null && !classCode.isEmpty()) {
                     // If the user has already entered a valid code, launch the class activity
-                     intent = new Intent(Home.this, classroomActivity.class);
+                    intent = new Intent(Home.this, classroomActivity.class);
                     startActivity(intent);
                 } else {
                     intent = new Intent(Home.this, Enter_Class.class);
@@ -78,7 +69,7 @@ public class Home extends BaseActivity implements View.OnClickListener {
                 }
                 break ;
             case R.id.ResourceCardView:
-                 intent = new Intent(Home.this, ResourceActivity.class);
+                intent = new Intent(Home.this, ResourceActivity.class);
                 startActivity(intent);
                 break ;
             case R.id.EventCardView:

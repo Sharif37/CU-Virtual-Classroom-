@@ -1,0 +1,6 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Set the window content overlay to null -->
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+</resources>

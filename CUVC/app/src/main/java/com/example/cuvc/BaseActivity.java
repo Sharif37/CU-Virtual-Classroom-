@@ -26,6 +26,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResourceId());
 
+        //Toast.makeText(this, "hello ", Toast.LENGTH_SHORT).show();
         // Find the DrawerLayout in the layout
         mDrawerLayout = findViewById(R.id.drawerLayout);
 
@@ -34,7 +35,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
         nav.setNavigationItemSelectedListener(this);
 
 
-        Toast.makeText(this, "hello ", Toast.LENGTH_SHORT).show();
         // Set up the ActionBarDrawerToggle with the DrawerLayout
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.OpenDrawer, R.string.CloseDrawer);
         mDrawerLayout.addDrawerListener(mDrawerToggle);
@@ -70,6 +70,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
         Intent intent ;
         if(item.getItemId()==R.id.opClassroom)
         {
@@ -93,9 +94,10 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
             finish();
 
         }
-        if(item.getItemId()==R.id.joinClassroom)
+        if(item.getItemId()==R.id.updateClassTime)
         {
-          
+            intent = new Intent(this, setClassUpdate.class);
+            startActivity(intent);
 
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);

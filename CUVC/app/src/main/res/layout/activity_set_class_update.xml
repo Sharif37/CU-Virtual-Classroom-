@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".setClassUpdate">
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="2dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="30dp"
+            android:layout_gravity="center"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Class Schedule"
+                    android:textSize="24sp"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    />
+
+                <TextView
+                    android:id="@+id/todaysDateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                    android:text="hello"
+                    android:textSize="16sp"
+                    />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:layout_marginBottom="5dp"
+            app:cardElevation="4dp">
+        <!-- Template row for adding new rows -->
+        <LinearLayout
+            android:id="@+id/templateRow1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <!-- Course name input -->
+            <EditText
+                android:id="@+id/courseName1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Course1"/>
+
+            <!-- Start time input -->
+            <EditText
+                android:id="@+id/startTime1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Start time"/>
+
+            <!-- End time input -->
+            <EditText
+                android:id="@+id/endTime1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="End time"/>
+
+            <!-- Teacher input -->
+            <EditText
+                android:id="@+id/teacher1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Teacher"/>
+
+
+        </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:layout_marginBottom="5dp"
+            app:cardElevation="4dp">
+        <LinearLayout
+            android:id="@+id/templateRow2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <!-- Course name input -->
+            <EditText
+                android:id="@+id/courseName2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Course2"/>
+
+            <!-- Start time input -->
+            <EditText
+                android:id="@+id/startTime2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Start time"/>
+
+            <!-- End time input -->
+            <EditText
+                android:id="@+id/endTime2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="End time"/>
+
+            <!-- Teacher input -->
+            <EditText
+                android:id="@+id/teacher2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Teacher"/>
+
+
+        </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:layout_marginBottom="5dp"
+            app:cardElevation="4dp">
+        <LinearLayout
+            android:id="@+id/templateRow3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <!-- Course name input -->
+            <EditText
+                android:id="@+id/courseName3"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Course3"/>
+
+            <!-- Start time input -->
+            <EditText
+                android:id="@+id/startTime3"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Start time"/>
+
+            <!-- End time input -->
+            <EditText
+                android:id="@+id/endTime3"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="End time"/>
+
+            <!-- Teacher input -->
+            <EditText
+                android:id="@+id/teacher3"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Teacher"/>
+
+
+        </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:layout_marginBottom="5dp"
+            app:cardElevation="4dp">
+
+        <LinearLayout
+            android:id="@+id/templateRow4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <!-- Course name input -->
+            <EditText
+                android:id="@+id/courseName4"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Course4"/>
+
+            <!-- Start time input -->
+            <EditText
+                android:id="@+id/startTime4"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Start time"/>
+
+            <!-- End time input -->
+            <EditText
+                android:id="@+id/endTime4"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="End time"/>
+
+            <!-- Teacher input -->
+            <EditText
+                android:id="@+id/teacher4"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Teacher"/>
+
+
+        </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardElevation="4dp">
+
+        <LinearLayout
+            android:id="@+id/templateRow5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <!-- Course name input -->
+            <EditText
+                android:id="@+id/courseName5"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Course5"/>
+
+            <!-- Start time input -->
+            <EditText
+                android:id="@+id/startTime5"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Start time"/>
+
+            <!-- End time input -->
+            <EditText
+                android:id="@+id/endTime5"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="End time"/>
+
+            <!-- Teacher input -->
+            <EditText
+                android:id="@+id/teacher5"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Teacher"/>
+
+
+        </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <Button
+            android:id="@+id/btnSaveData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="save"
+            android:layout_gravity="center_horizontal"/>
+
+
+
+    </LinearLayout>
+</LinearLayout>

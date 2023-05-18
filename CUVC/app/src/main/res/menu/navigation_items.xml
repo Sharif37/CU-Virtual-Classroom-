@@ -6,8 +6,8 @@
     android:icon="@drawable/ic_baseline_class_24"/>
 
     <item
-        android:id="@+id/joinClassroom"
-        android:title="Join Classroom"
+        android:id="@+id/updateClassTime"
+        android:title="Set Class Update"
         android:icon="@drawable/baseline_east_24"/>
 
 
