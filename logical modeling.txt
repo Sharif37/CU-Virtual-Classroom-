@@ -1,0 +1,7 @@
+\section{Logical Modelling}\label{sec:lm}
+
+A relational model is a method of organizing data in a database using a collection of tables with rows and columns. Each table represents a specific entity or relationship in the data, and the columns represent the attributes or properties of that entity or relationship.
+
+To convert an E-R diagram to a relational model, we can start by identifying the entities in the E-R diagram and creating a table for each one. The columns of the table will correspond to the attributes of the entity. We then identify the relationships between the entities and create additional tables to represent these relationships. The columns of these tables will correspond to the foreign keys, linking the rows of the related tables together. In our case, we have multiple entities such as users, students, class, admin, semester, course, resource, event, and transport. Each entity is represented by a table. The relationships between the entities are represented as foreign keys in the table. For example, the Student table has a foreign key to the Class table, representing the many-to-many relationship between students and classes. Similarly, the Class table has a foreign key to the Semester table, representing the one-to-one relationship between a class and a semester.
+
+\clearpage
