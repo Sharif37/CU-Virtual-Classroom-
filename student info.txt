@@ -1,0 +1,21 @@
+%%%% Details of student
+%-------------------------
+%Fill up the table with your group information
+%----------------------------
+
+\begin{table}[t]
+\caption{Details of Group-06}% insert your group number 
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Roll Id & Name & Sigature & Date & Supervisor Approval \\ \hline
+20701015     &  Kazi Omar Sharif    &   Sharif       &   18.01.2023   &                     \\ \hline
+20701023      & Saiyed Mohammad Hasan     &  Hasan        &   18.01.2023   &                     \\ \hline
+20701070       & Mohammad Fazly Rabby     &   Rabby       &   18.01.2023   &                     \\ \hline
+20701041        & Priya Barua     &   Priya       & 18.01.2023     &                     \\ \hline
+     
+      
+\end{tabular}%
+}
+\end{table}
+\clearpage

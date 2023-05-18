@@ -1,0 +1,38 @@
+\section{Requirement Gathering and analysis}\label{sec:rga}
+To gather the requirements for the Virtual Classroom Android App project, several methods were used, including documentation, interviewing, survey, and discussion.
+\begin{itemize}
+\item Documentation: The project team reviewed existing literature and documents related to virtual classrooms, including articles, research papers, and other relevant resources, to gather an understanding of the current state of the problem and existing solutions.
+
+\item Interviewing: The project team conducted interviews with potential users of the app, such as students, teachers, and administrators, to gather their views on the current problems faced in virtual classrooms and their requirements for an ideal virtual classroom app.
+
+
+\item Discussion: The project team held internal and external discussions with experts in the field of virtual classrooms, to gather their views on the current problems faced in virtual classrooms and their requirements for an ideal virtual classroom app.
+\end{itemize}
+The stack-holders of the system are students.
+
+\textbf{Functional requirements:}
+
+\begin{itemize}
+\item Students  should be able to join a virtual classroom
+\item Students  should be able to see class updates
+\item Students  should be able to see the schedule for transports
+\item Students  should be able to see class resources and upcoming events
+\item Students should be able to see semester information including course list, syllabus and teachers list
+\item Students should be able to communicate through the app
+
+\end{itemize}
+\textbf{Non-functional requirements:}
+
+\begin{itemize}
+\item The app should be user-friendly and easy to navigate
+\item The app should have high availability and should be accessible at all times
+\item The app should have a high level of security to protect user data
+\item The app should be able to handle large amounts of data
+\item The app should be compatible with different devices and screen sizes
+\item The app should be responsive and should load quickly
+
+\end{itemize}
+
+
+
+\clearpage
