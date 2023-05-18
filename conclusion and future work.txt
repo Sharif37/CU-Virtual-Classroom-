@@ -1,0 +1,13 @@
+\section{Conclusion and Future Work}\label{sec:cfw} 
+\begin{itemize}
+   
+
+\item Our Android App will help Students in various ways.Students can share different types of information.Many Classroom tasks can be done at home by online.
+
+\item Though our App works well but it has some limitation.
+Firstly it is not working in offline when students using this app students have must be internet connection. Secondly we haven't launch our app in playstore so firstly student download apk file then install this app. 
+
+\item We have some future  plans for the app.First of all we have to develop the app more.Then we have to launch it on the playstore.After launch it on the playstore then we share our app in a social media like Facebook,Twiter,Instragram etc.
+
+\end{itemize}
+\clearpage

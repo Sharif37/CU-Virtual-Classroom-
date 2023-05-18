@@ -1,0 +1,26 @@
+\section{Software Deployment}\label{sec:sd}
+\begin{enumerate}
+     
+
+\item The user have to download the APK file of our virtual classroom app onto their Android device. This can be done by downloading the file from a website or by transferring the file from a computer to their device using a USB cable.
+
+\item Before installing the app, the user need to allow installation of apps from unknown sources on thier device. To do this, go to the "Settings" menu, select "Security", and then enable the "Unknown sources" option.
+
+\item Once the user have enabled unknown sources,they have to locate the APK file on the their device using a file manager app and tap on it to begin the installation process.The user may be prompted to review the app's permissions before installation. Read through the permissions and tap "Install" to proceed.
+
+\item After the installation is complete, open the virtual classroom app from  device's app drawer.
+
+\item The app will then prompt the user to sign up or log in. If the user is a new user, the user will need to sign up by providing their student id, username, email address and creating a password and confirming the password. If the user is not  an existing user, they can log in using their id and password.
+
+\item Once the user have logged in, they will be taken to the main screen of the app, where they can see all of the available contents.
+
+\item To join a class, they have to simply tap on the classroom and take the classroom code from the admin that they are interested in and then write the class code.
+
+\item Once the user are in the class, they will be able to see the current semester and people. They can participate in the class by posting and by sharing important files.
+
+In terms of configuration, there shouldn't be much that the user needs to do beyond logging in and joining a class. However, 
+if there are any settings that the user needs to adjust, such as font change and dark mode enable settings, they can do so by going to the app's settings menu. 
+This menu can usually be accessed by tapping on the "Settings" icon in the app.
+\end{enumerate}
+
+\clearpage

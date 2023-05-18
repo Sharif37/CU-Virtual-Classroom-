@@ -1,0 +1,31 @@
+
+\section{System Architecture}
+\begin{center}
+    \includegraphics{system_archi.jpg}
+\end{center}
+
+
+\begin{center}
+Figure: System Architecture.\\
+    
+\end{center} 
+\textbf{In this architecture, we have five main components:}
+\begin{itemize}
+    \item \textbf{Classroom:}
+    This component represents the CU virtual classroom itself. It includes the logic for creating, joining, and managing virtual classes.
+  
+    \item \textbf{User Interface:}
+    This component represents the user interface for the app. It includes activities and fragments that allow users to interact with the classroom and its various features.
+    
+    \item\textbf{Network Layer:}
+    This component handles the network communication between the app and the backend service. It includes classes that handle HTTP requests and responses, as well as data serialization and deserialization.
+    \item\textbf{Backend Service: }
+    This component represents the backend service that provides the cu virtual classroom functionality. It includes a REST API that the app can use to create, join, and manage virtual classes.
+
+    
+    \item\textbf{Database:}
+     The database stores user data, virtual classroom data, and other important information. This data is used by the backend services to manage user accounts, classrooms, and other key aspects of the virtual classroom.
+
+\end{itemize}
+
+
