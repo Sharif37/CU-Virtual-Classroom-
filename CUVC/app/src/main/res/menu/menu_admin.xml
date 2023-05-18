@@ -1,0 +1,17 @@
+<!-- menu_admin.xml -->
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_edit"
+        android:title="Edit"
+        android:icon="@drawable/ic_edit"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_upload"
+        android:title="Upload"
+        android:icon="@drawable/ic_upload"
+        android:orderInCategory="200"
+        app:showAsAction="ifRoom" />
+</menu>

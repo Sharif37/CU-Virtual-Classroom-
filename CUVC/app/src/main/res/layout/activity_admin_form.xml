@@ -1,0 +1,55 @@
+<!-- activity_admin_form.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#87CEEB"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/event_name_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Event Name"
+        android:inputType="text"
+        android:maxLines="1"
+        android:layout_marginBottom="8dp" />
+
+    <LinearLayout
+        android:id="@+id/date_time_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/event_name_edit_text">
+
+        <EditText
+            android:id="@+id/date_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Date"
+            android:inputType="date"
+            android:maxLines="1"
+            android:layout_marginEnd="4dp" />
+
+        <EditText
+            android:id="@+id/time_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Time"
+            android:inputType="time"
+            android:maxLines="1"
+            android:layout_marginStart="4dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_time_layout"
+        android:layout_alignParentEnd="true"
+        android:text="Save" />
+
+</RelativeLayout>

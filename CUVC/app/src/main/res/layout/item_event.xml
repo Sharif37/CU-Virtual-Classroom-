@@ -1,0 +1,47 @@
+<!-- item_event.xml -->
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    android:background="@color/white"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFE0"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/event_name_text_view"
+            android:layout_width="0dp"
+            android:text="kazi omar sharif"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/event_date_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12-12-12"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/event_time_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="3:20"
+            android:textColor="@color/black"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

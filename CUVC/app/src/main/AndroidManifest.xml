@@ -58,12 +58,13 @@
         <activity
             android:name=".register"
             android:exported="false" />
-        <activity
-            android:name=".HomeActivity"
-            android:exported="false" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
+        <activity
+            android:name=".AdminFormActivity"
+            android:label="Admin Form Activity" />
         <activity
             android:name=".MainActivity"
             android:exported="true" >
