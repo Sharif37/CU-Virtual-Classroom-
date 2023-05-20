@@ -39,7 +39,7 @@ public class AdminFormActivity extends AppCompatActivity {
         // Initialize Firebase
         databaseReference = FirebaseDatabase.getInstance().getReference().child("events");
 
-        // Initialize views
+
         eventNameEditText = findViewById(R.id.event_name_edit_text);
         dateEditText = findViewById(R.id.date_edit_text);
         timeEditText = findViewById(R.id.time_edit_text);
@@ -49,7 +49,7 @@ public class AdminFormActivity extends AppCompatActivity {
         dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
 
-        // Date EditText click listener
+
         dateEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +57,7 @@ public class AdminFormActivity extends AppCompatActivity {
             }
         });
 
-        // Time EditText click listener
+
         timeEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,16 +121,24 @@ public class AdminFormActivity extends AppCompatActivity {
         String eventDate = dateEditText.getText().toString().trim();
         String eventTime = timeEditText.getText().toString().trim();
 
-        // Save event details to Firebase
+        // current date and time
+        Calendar currentDateTime = Calendar.getInstance();
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm", Locale.getDefault());
+        String creationDate = sdfDate.format(currentDateTime.getTime());
+        String creationTime = sdfTime.format(currentDateTime.getTime());
+
+        // Save event
         String eventId = databaseReference.push().getKey();
-        Event event = new Event(eventId, eventName, eventDate, eventTime);
+        Event event = new Event(eventId, eventName, eventDate, eventTime, creationDate, creationTime);
         databaseReference.child(eventId).setValue(event);
 
-        // Clear input fields
+        // Clear
         eventNameEditText.setText("");
         dateEditText.setText("");
         timeEditText.setText("");
 
-        // Display success message or perform any additional actions
+
     }
+
 }

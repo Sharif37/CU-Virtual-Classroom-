@@ -8,10 +8,5 @@
         android:orderInCategory="100"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/menu_upload"
-        android:title="Upload"
-        android:icon="@drawable/ic_upload"
-        android:orderInCategory="200"
-        app:showAsAction="ifRoom" />
+
 </menu>

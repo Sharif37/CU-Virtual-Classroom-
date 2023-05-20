@@ -10,18 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cc004ac-6905-41a4-969a-7ef59163f064" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/AdminFormActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/EventAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_edit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_upload.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_admin_form.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_event.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_admin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/progressBar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_progress_spinner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.." beforeDir="false" afterPath="$PROJECT_DIR$/.." afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/AdminFormActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/AdminFormActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Event.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/EventActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/EventActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_admin_form.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_admin_form.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_event.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_event.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_admin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_admin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../CUVC/app/build.gradle" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../CUVC/build.gradle" beforeDir="false" />
     </list>
@@ -30,7 +28,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\shari\.android\avd\Pixel_3_API_29.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[9993e217]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

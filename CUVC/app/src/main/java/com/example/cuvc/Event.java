@@ -1,21 +1,34 @@
 package com.example.cuvc;
 
 public class Event implements Comparable<Event> {
+    private String id;
     private String name;
     private String date;
     private String time;
-    private String Id;
+    private String creationDate;
+    private String creationTime;
 
-    public Event(String Id,String name, String date, String time) {
-        this.Id=Id ;
+    public Event() {
+
+    }
+
+    public Event(String id, String name, String date, String time, String creationDate, String creationTime) {
+        this.id = id;
         this.name = name;
         this.date = date;
         this.time = time;
+        this.creationDate = creationDate;
+        this.creationTime = creationTime;
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
+    public void setId(String id)
+    {
+        this.id=id ;
+    }
+
     public String getName() {
         return name;
     }
@@ -28,9 +41,25 @@ public class Event implements Comparable<Event> {
         return time;
     }
 
-    @Override
-    public int compareTo(Event other) {
-        // Compare events based on time
-        return this.getTime().compareTo(other.getTime());
+    public String getCreationDate() {
+        return creationDate;
     }
+
+    public String getCreationTime() {
+        return creationTime;
+    }
+
+
+    public int compareTo(Event other) {
+
+        int dateComparison = this.getDate().compareTo(other.getDate());
+
+        if (dateComparison == 0) {
+            // If dates are the same
+            return this.getTime().compareTo(other.getTime());
+        } else {
+            return dateComparison;
+        }
+    }
+
 }

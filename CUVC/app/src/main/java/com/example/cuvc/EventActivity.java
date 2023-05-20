@@ -1,5 +1,6 @@
 package com.example.cuvc;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,53 +10,74 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class EventActivity extends AppCompatActivity {
 
+    TextView noEventsTextView;
     private CountDownTimer countdownTimer;
     private ProgressBar countdownProgress;
-    private TextView timeTextView;
+    private TextView timeTextView, eName;
     private RecyclerView recyclerView;
     private EventAdapter eventAdapter;
     private List<Event> eventList;
+    private View progressBarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
 
+
         countdownProgress = findViewById(R.id.countdown_progress_bar);
         timeTextView = findViewById(R.id.countdown_text_view);
+        progressBarLayout = findViewById(R.id.progressBarLayout);
+        eName = findViewById(R.id.name_text_view);
 
 
-        // Set up your RecyclerView adapter and layout manager here
-        // Initialize the RecyclerView
+        //set Recyclerview
         recyclerView = findViewById(R.id.upcoming_events_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Create a list of events (dummy data for demonstration)
+
         eventList = new ArrayList<>();
-        eventList.add(new Event("","Event 1", "2023-05-20", "09:00 AM"));
-        eventList.add(new Event("","Event 2", "2023-05-22", "02:30 PM"));
-        eventList.add(new Event("","Event 3", "2023-05-25", "11:15 AM"));
 
-        // Sort the event list based on time
-        Collections.sort(eventList);
 
-        // Create and set the adapter
+        retrieveEventData();
+
+
+        // adapter
         eventAdapter = new EventAdapter(eventList);
         recyclerView.setAdapter(eventAdapter);
 
-        long timeLeftInMillis = 60000; // Example: 1 minute (you should replace this with your desired time)
-        startCountdownTimer(timeLeftInMillis);
+        //if no event ( array list empty)
+        noEventsTextView = findViewById(R.id.noeventmessage);
+
+
     }
 
     @Override
@@ -68,57 +90,150 @@ public class EventActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.menu_edit) {
-            // Handle the Edit menu item click
-            openEditEventForm();
-            Intent intent=new Intent(this,AdminFormActivity.class);
+            Intent intent = new Intent(this, AdminFormActivity.class);
             startActivity(intent);
             return true;
-        } else if (itemId == R.id.menu_upload) {
-            // Handle the Upload menu item click
-            uploadEventToFirebase();
-            return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
-    private void openEditEventForm() {
-        // Implement the logic to open the form for editing the event
-        // You can start a new activity or show a dialog fragment, for example
-    }
 
-    private void uploadEventToFirebase() {
-        // Implement the logic to upload the event to Firebase
-        // You can use Firebase APIs to store the event data
-    }
-
-    private void startCountdownTimer(long timeLeftInMillis) {
-        countdownProgress.setMax(10000); // Set a large max value for precision
-        countdownProgress.setProgress(10000); // Start with full progress
-
+    private void startCountdownTimer(long timeLeftInMillis, long total, String eventId) {
         countdownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                long totalTime = timeLeftInMillis;
-                long elapsedTime = totalTime - millisUntilFinished;
+                long remainingTimeInMillis = millisUntilFinished;
 
-                int progress = (int) (elapsedTime * 10000 / totalTime);
-                countdownProgress.setProgress(10000 - progress);
+                int progress = (int) ((total - remainingTimeInMillis) * 100 / total);
 
-                long days = TimeUnit.MILLISECONDS.toDays(millisUntilFinished);
-                long hours = TimeUnit.MILLISECONDS.toHours(millisUntilFinished) % 24;
-                long minutes = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) % 60;
-                long seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) % 60;
+                //Toast.makeText(EventActivity.this, progress+"", Toast.LENGTH_SHORT).show();
+                countdownProgress.setProgress(100 - progress);
 
-                String timeLeft = String.format(Locale.getDefault(), "%02d:%02d:%02d", days * 24 + hours, minutes, seconds);
+                long days = TimeUnit.MILLISECONDS.toDays(remainingTimeInMillis);
+                long hours = TimeUnit.MILLISECONDS.toHours(remainingTimeInMillis) % 24;
+                long minutes = TimeUnit.MILLISECONDS.toMinutes(remainingTimeInMillis) % 60;
+
+                String timeLeft = String.format(Locale.getDefault(), "%02d:%02d:%02d", days, hours, minutes);
                 timeTextView.setText(timeLeft);
             }
 
             @Override
             public void onFinish() {
-                // Handle the end of the countdown timer
+                // if progress bar finished
+                deleteEvent(eventId);
             }
         };
         countdownTimer.start();
     }
+
+
+    private void deleteEvent(String eventId) {
+        DatabaseReference eventRef = FirebaseDatabase.getInstance().getReference().child("events").child(eventId);
+        eventRef.removeValue()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Event deleted successfully
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Failed to delete the event
+                    }
+                });
+    }
+
+
+    public void retrieveEventData() {
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference eventRef = rootRef.child("events");
+
+        eventRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                eventList.clear();
+                for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
+                    Event event = eventSnapshot.getValue(Event.class);
+                    String eventId = eventSnapshot.getKey();
+                    event.setId(eventId); // set event id for delete
+                    eventList.add(event);
+                }
+
+                // Sort the event
+                Collections.sort(eventList);
+
+                eventAdapter.notifyDataSetChanged();
+
+                if (eventList.isEmpty()) {
+
+                    noEventsTextView.setVisibility(View.VISIBLE);
+                } else {
+
+                    noEventsTextView.setVisibility(View.GONE);
+
+                    Event firstEvent = eventList.get(0);
+                    String eventDate = firstEvent.getDate();
+                    String eventTime = firstEvent.getTime();
+                    String creationDate = firstEvent.getCreationDate();
+                    String creationTime = firstEvent.getCreationTime();
+                    String eventId = firstEvent.getId();
+                    String name = firstEvent.getName();
+
+                    //set event name
+                    eName.setText(name);
+                    calculateTimeLeft(eventDate, eventTime, creationDate, creationTime, eventId);
+                }
+
+                progressBar.hideProgressBar(progressBarLayout);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void calculateTimeLeft(String eventDate, String eventTime, String creationDate, String creationTime, String eventId) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+        try {
+
+            //parse date and time
+            Date eventDateTime = sdf.parse(eventDate + " " + eventTime);
+            Date creationDateTime = sdf.parse(creationDate + " " + creationTime);
+
+            // current date and time
+            Calendar currentDateTime = Calendar.getInstance();
+
+            // Calculate the remaining time based on the creation time
+            long timeDifference = eventDateTime.getTime() - currentDateTime.getTimeInMillis();
+            long total = eventDateTime.getTime() - creationDateTime.getTime();
+
+            //if time behind
+            if (timeDifference < 0) {
+
+                countdownProgress.setProgress(0);
+                deleteEvent(eventId);
+                Toast.makeText(this, "Event has occurred" + "", Toast.LENGTH_SHORT).show();
+            } else {
+                startCountdownTimer(timeDifference, total, eventId);
+            }
+
+        } catch (ParseException e) {
+            Toast.makeText(this, "Error occurred: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        progressBar.showProgressBar(progressBarLayout);
+    }
+
+
 }
 

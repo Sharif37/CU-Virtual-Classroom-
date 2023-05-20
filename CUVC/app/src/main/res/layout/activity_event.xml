@@ -5,7 +5,9 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
+    android:id="@+id/eventContainer"
     tools:context=".EventActivity">
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/pCardview"
@@ -20,30 +22,30 @@
         <RelativeLayout
             android:id="@+id/countdown_progress_bar_layout"
             android:background="#FFFFE0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ProgressBar
                 android:id="@+id/countdown_progress_bar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_height="205dp"
                 android:indeterminate="false"
-                android:padding="16dp"
                 android:max="100"
+                android:padding="16dp"
                 android:progress="100"
                 android:progressDrawable="@drawable/circular_progress_bar1" />
 
             <TextView
                 android:id="@+id/countdown_text_view"
-                android:layout_width="101dp"
-                android:layout_height="41dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/countdown_progress_bar"
                 android:layout_alignTop="@+id/countdown_progress_bar"
                 android:layout_alignEnd="@+id/countdown_progress_bar"
-                android:layout_marginStart="56dp"
-                android:layout_marginTop="74dp"
-                android:layout_marginEnd="43dp"
+                android:layout_alignBottom="@+id/countdown_progress_bar"
+                android:layout_centerInParent="true"
+                android:gravity="center"
                 android:text="00:00:00"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
@@ -53,20 +55,22 @@
 
         <TextView
             android:id="@+id/name_text_view"
-            android:layout_width="177dp"
-            android:layout_height="205dp"
-            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginRight="30dp"
             android:background="#FFFFE0"
             android:padding="16dp"
-            android:text="Lab exam "
-            android:gravity="center_vertical"
+            android:text=" "
             android:textColor="@color/black"
-            android:layout_alignTop="@id/countdown_progress_bar_layout"
-            android:layout_alignBottom="@id/countdown_progress_bar_layout"
-            android:layout_toEndOf="@id/countdown_progress_bar_layout"
             android:textSize="18sp" />
 
     </androidx.cardview.widget.CardView>
+
+
+    <include
+        android:id="@+id/progressBarLayout"
+        layout="@layout/layout_progress_spinner" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/upcoming_events_recycler_view"
@@ -74,5 +78,22 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/pCardview"
         android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/noeventmessage"
+        android:layout_width="157dp"
+        android:layout_height="34dp"
+        android:layout_below="@+id/pCardview"
+        android:layout_alignStart="@+id/progressBarLayout"
+        android:layout_alignEnd="@+id/progressBarLayout"
+        android:layout_alignBottom="@+id/progressBarLayout"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="97dp"
+        android:layout_marginEnd="114dp"
+        android:layout_marginBottom="355dp"
+        android:visibility="gone"
+        android:text="No events available" />
+
 
 </RelativeLayout>
