@@ -1,5 +1,6 @@
 package com.example.cuvc;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -19,12 +20,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //table user
-    public static final int version = 8;
+    public static final int version = 9;
     public static final String databaseName = "Classroom";
     public static final String tableName = "user";
     public static final String col1 = "ID";
@@ -35,7 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String col11 = "ID";
 
 
-// table sessions
+    // table sessions
     public static final String col22 = "session_id";
     public static final String col33 = "login_time";
     public static final long session_timeout = 30 * 60 * 60;
@@ -51,24 +56,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String admin_Id = "AdminID";
     public static final String admin_Name = "Name";
     public static final String admin_Email = "Email";
-    Intent intent;
-    String CreateTable = "CREATE TABLE " + tableName + "("
-            + col1 + " INTEGER PRIMARY KEY ,"
-            + col2 + " TEXT,"
-            + col3 + " TEXT,"
-            + col4 + " TEXT"
-            + ")";
-    String CreateTable2 = "CREATE TABLE " + tableName2 + "("
-            + col11 + " INTEGER  ,"
-            + col22 + " TEXT ,"
-            + col33 + " INTEGER "
-            + ")";
-    String Create_Class_table = "CREATE TABLE " + tableClassroom + "(" + class_Id + " Text primary key ," +
-            Class_Name + " Text ," + class_description + " Text ," + class_adminID + " Text ," + class_key + "  Text  unique , " + " FOREIGN Key " + "(" + class_adminID + ")" +
-            " REFERENCES  " + tableName + "(" + col1 + ")" + ")";
-    String Create_Admin_table = "CREATE TABLE " + tableAdmin + "(" + admin_Id + " Text primary key ," +
-            admin_Name + " Text ," + admin_Email + " Text " + ")";
+
+
+    //table train schedule
+
+    private static final String TRAIN_SCHEDULE_fromCampus = "fromCampus_regular_train_schedule";
+    private static final String COLUMN_ID = "_id";
+    private static final String COLUMN_TRAIN_SHIFT = "train_shift";
+    private static final String FromCampus = "from campus";
+
+
+    private static final String TRAIN_SCHEDULE_fromCity = "fromCity_train_schedule";
+    private static final String COLUMN_ID2 = "_id";
+    private static final String COLUMN_TRAIN_SHIFT2 = "train_shift";
+    private static final String FromCity = "from city";
+
+    private static final String TRAIN_SCHEDULE_holiday_fromCampus = "holiday1_train_schedule";
+    private static final String COLUMN_ID3 = "_id";
+    private static final String COLUMN_TRAIN_SHIFT3 = "train_shift";
+    private static final String FromCampusHoliday = "from campus";
+
+    private static final String TRAIN_SCHEDULE_holiday_fromCity = "holiday2_train_schedule";
+    private static final String COLUMN_ID4 = "_id";
+    private static final String COLUMN_TRAIN_SHIFT4 = "train_shift";
+    private static final String FromCityHoliday = "from city";
+
+
     private final Context context;
+    Intent intent;
+    String CreateTable = "CREATE TABLE " + tableName + "(" + col1 + " INTEGER PRIMARY KEY ," + col2 + " TEXT," + col3 + " TEXT," + col4 + " TEXT" + ")";
+    String CreateTable2 = "CREATE TABLE " + tableName2 + "(" + col11 + " INTEGER  ," + col22 + " TEXT ," + col33 + " INTEGER " + ")";
+    String Create_Class_table = "CREATE TABLE " + tableClassroom + "(" + class_Id + " Text primary key ," + Class_Name + " Text ," + class_description + " Text ," + class_adminID + " Text ," + class_key + "  Text  unique , " + " FOREIGN Key " + "(" + class_adminID + ")" + " REFERENCES  " + tableName + "(" + col1 + ")" + ")";
+    String Create_Admin_table = "CREATE TABLE " + tableAdmin + "(" + admin_Id + " Text primary key ," + admin_Name + " Text ," + admin_Email + " Text " + ")";
 
     DatabaseHelper(@Nullable Context context) {
 
@@ -84,6 +103,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(Create_Class_table);
         db.execSQL(Create_Admin_table);
 
+        // Create the train schedule table
+        String trainScheduleFromCampus = "CREATE TABLE " + TRAIN_SCHEDULE_fromCampus + " (" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_TRAIN_SHIFT + " TEXT, " +
+                FromCampus + " TEXT)";
+
+        String trainScheduleFromCity = "CREATE TABLE " + TRAIN_SCHEDULE_fromCity + " (" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_TRAIN_SHIFT + " TEXT, " +
+                FromCity + " TEXT)";
+
+        String trainScheduleHolyDayFromCampus = "CREATE TABLE " + TRAIN_SCHEDULE_holiday_fromCampus + "(" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_TRAIN_SHIFT + " TEXT," +
+                FromCampusHoliday + " TEXT)";
+        String trainScheduleHolidayFromCity = "CREATE TABLE " + TRAIN_SCHEDULE_fromCity + "(" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_TRAIN_SHIFT + " TEXT," +
+               FromCityHoliday + " TEXT)";
+
+        db.execSQL(trainScheduleFromCampus);
+        db.execSQL(trainScheduleFromCity);
 
     }
 
@@ -93,6 +134,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + tableName2);
         db.execSQL("DROP TABLE IF EXISTS " + tableClassroom);
         db.execSQL("DROP TABLE IF EXISTS " + tableAdmin);
+
 
         onCreate(db);
 
@@ -184,29 +226,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public void InsertUserInFirebaseDatabase(String id, String name, String email, String password,boolean isAdmin , OnDataInsertedListener listener) {
+    public void InsertUserInFirebaseDatabase(String id, String name, String email, String password, boolean isAdmin, OnDataInsertedListener listener) {
         // Get a reference to the Firebase Realtime Database
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
         // Create a new user object
-        User user = new User(id, name, email, password,isAdmin);
+        User user = new User(id, name, email, password, isAdmin);
 
         // Store the user object in the database under the "users" node with the user ID as the key
-        databaseReference.child("users").child(id).setValue(user)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        // Notify the listener that the data was inserted successfully
-                        listener.onDataInserted(true);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Notify the listener that the data insertion failed
-                        listener.onDataInserted(false);
-                    }
-                });
+        databaseReference.child("users").child(id).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                // Notify the listener that the data was inserted successfully
+                listener.onDataInserted(true);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // Notify the listener that the data insertion failed
+                listener.onDataInserted(false);
+            }
+        });
     }
 
 
@@ -228,6 +268,59 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 listener.onUserExistenceCheckComplete(false);
             }
         });
+    }
+
+    public void addTrainScheduleFromCampus (TrainSchedule trainSchedule) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_TRAIN_SHIFT, trainSchedule.getName());
+        values.put(FromCampus, trainSchedule.getFromCampus().toString());
+        db.insert(TRAIN_SCHEDULE_fromCampus, null, values);
+        db.close();
+    }
+    public void addTrainScheduleFromCity (TrainSchedule trainSchedule) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_TRAIN_SHIFT, trainSchedule.getName());
+        values.put(FromCity, trainSchedule.getFromCampus().toString());
+        db.insert(TRAIN_SCHEDULE_fromCity, null, values);
+        db.close();
+    }
+    public void addTrainScheduleFromCampusHoliday (TrainSchedule trainSchedule) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_TRAIN_SHIFT, trainSchedule.getName());
+        values.put(FromCampusHoliday, trainSchedule.getFromCampus().toString());
+        db.insert(TRAIN_SCHEDULE_holiday_fromCampus, null, values);
+        db.close();
+    }
+
+    public void addTrainScheduleFromCityHoliday (TrainSchedule trainSchedule) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_TRAIN_SHIFT, trainSchedule.getName());
+        values.put(FromCityHoliday, trainSchedule.getFromCampus().toString());
+        db.insert(TRAIN_SCHEDULE_holiday_fromCity, null, values);
+        db.close();
+    }
+
+    @SuppressLint("Range")
+    public List<TrainSchedule> getAllTrainSchedules() {
+        List<TrainSchedule> trainSchedules = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(TRAIN_SCHEDULE_fromCampus, null, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                String trainName = cursor.getString(cursor.getColumnIndex(COLUMN_TRAIN_SHIFT));
+                String fromCampus = cursor.getString(cursor.getColumnIndex(FromCampus));
+                String fromCity = cursor.getString(cursor.getColumnIndex(FromCity));
+                TrainSchedule trainSchedule = new TrainSchedule(trainName, fromCampus);
+                trainSchedules.add(trainSchedule);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return trainSchedules;
     }
 
 

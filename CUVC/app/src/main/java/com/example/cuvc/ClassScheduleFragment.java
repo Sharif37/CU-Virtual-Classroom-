@@ -77,11 +77,6 @@ public class ClassScheduleFragment extends Fragment {
     }
 
 
-    public void retriveSchedule()
-    {
-
-
-    }
 
 
 
