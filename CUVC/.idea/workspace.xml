@@ -10,22 +10,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cc004ac-6905-41a4-969a-7ef59163f064" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/BusScheduleFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TrainAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TrainSchedule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TrainScheduleFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TransportPagerAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_bus_schedule.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_train_schedule.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_train.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/ClassScheduleFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/ClassScheduleFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/BusScheduleFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/BusScheduleFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/ClassScheduleAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/ClassScheduleAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/ClassScheduleItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/ClassScheduleItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/CreateClassroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/CreateClassroom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/DatabaseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TransportActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TransportActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_transport.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_transport.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CUVC/app/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CUVC/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/PostAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/PostAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Post_Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Post_Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/SharedPrefUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/SharedPrefUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TrainAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TrainAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TrainSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TrainSchedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TrainScheduleFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TrainScheduleFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/setClassUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/setClassUpdate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-v31/activity_set_class_update.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_display_class_key.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_display_class_key.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_set_class_update.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_set_class_update.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/class_schedule_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/class_schedule_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_bus_schedule.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_bus_schedule.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/header_lay.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/header_lay.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_train.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_train.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/post_recycler_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/post_recycler_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../abstract.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bibliography.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../conceptualmodeling.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../conclusion and future work.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../er2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementation.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../info1u.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../introduction.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logical modeling.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../normalization.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projectmanagement.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recuirment gathering and analysis.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../software deployment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../student info.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../system architecture.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../system_archi.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tittle page.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../validation.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CUVC/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CUVC/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CUVC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CUVC/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,14 +98,17 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "android-custom-viewC:/Program Files/Android/Android Studio/plugins/caches/modules-2/files-2.1/com.google.android.material/material/1.5.0/8d3b87c7463f55053836b805e014cb238f64757a/material-1.5.0-sources.jar!/com/google/android/material/navigation/NavigationView.java_SELECTED": "NavigationView",
+    "android-custom-viewC:/Users/shari/AppData/Local/Android/Sdk/sources/android-33/android/widget/ImageButton.java_SELECTED": "ImageButton",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
     "com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable": "ALL",
     "ignore.virus.scanning.warn.message": "true",
+    "last_directory_selection": "C:/Users/shari/AndroidStudioProjects/CU-Virtual-Classroom-/CUVC/app/src/main/res/mipmap-hdpi",
     "last_opened_file_path": "D:/",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.17",

@@ -19,5 +19,8 @@ public class SharedPrefUtils {
         String classkey = preferences.getString("classCode", "");
         return classkey;
     }
+    public String getCurrentUser(){
+        return preferences.getString("currentUser", "");
+    }
 }
 

@@ -1,15 +1,13 @@
 package com.example.cuvc;
 
-import static androidx.fragment.app.FragmentManager.TAG;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,11 +60,7 @@ public class setClassUpdate extends AppCompatActivity {
         startTime4=findViewById(R.id.startTime4);
         startTime5=findViewById(R.id.startTime5);
 
-        endTime1=findViewById(R.id.endTime1);
-        endTime2=findViewById(R.id.endTime2);
-        endTime3=findViewById(R.id.endTime3);
-        endTime4=findViewById(R.id.endTime4);
-        endTime5=findViewById(R.id.endTime5);
+
 
         teacher1=findViewById(R.id.teacher1);
         teacher2=findViewById(R.id.teacher2);
@@ -159,7 +153,7 @@ public class setClassUpdate extends AppCompatActivity {
 
     public void CollectSchedule(String courseName, String start, String end, String teacher) {
         if (courseName != null && !courseName.isEmpty()) {
-            ClassScheduleItem item = new ClassScheduleItem(courseName, start, end, teacher);
+            ClassScheduleItem item = new ClassScheduleItem(courseName, start, teacher);
             scheduleItemList.add(item);
         }
     }

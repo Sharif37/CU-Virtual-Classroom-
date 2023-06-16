@@ -1,6 +1,6 @@
 package com.example.cuvc;
 
-import android.annotation.SuppressLint;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -20,9 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -123,8 +121,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_TRAIN_SHIFT + " TEXT," +
                FromCityHoliday + " TEXT)";
 
-        db.execSQL(trainScheduleFromCampus);
-        db.execSQL(trainScheduleFromCity);
+        //db.execSQL(trainScheduleFromCampus);
+        //db.execSQL(trainScheduleFromCity);
 
     }
 
@@ -248,8 +246,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         });
     }
-
-
     public void checkIfUserExists(String userId, OnDataInsertedListener listener) {
         // Get a reference to the Firebase Realtime Database
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -270,6 +266,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         });
     }
 
+    /*
     public void addTrainScheduleFromCampus (TrainSchedule trainSchedule) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -303,8 +300,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert(TRAIN_SCHEDULE_holiday_fromCity, null, values);
         db.close();
     }
-
-    @SuppressLint("Range")
+*/
+  /*  @SuppressLint("Range")
     public List<TrainSchedule> getAllTrainSchedules() {
         List<TrainSchedule> trainSchedules = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
@@ -321,7 +318,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return trainSchedules;
-    }
+    }*/
 
 
     public interface OnDataInsertedListener {

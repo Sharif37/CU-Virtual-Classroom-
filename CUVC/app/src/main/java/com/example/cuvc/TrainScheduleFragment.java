@@ -1,5 +1,6 @@
 package com.example.cuvc;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,10 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -36,7 +39,7 @@ public class TrainScheduleFragment extends Fragment {
 
         databaseHelper = new DatabaseHelper(getContext());
 
-        storeTrainSchedules(CityToCampusList, CampusToCityList);
+
 
     }
 
@@ -56,6 +59,41 @@ public class TrainScheduleFragment extends Fragment {
         CityToCampusList = new ArrayList<>();
         CampusToCityList = new ArrayList<>();
 
+        ArrayList<TrainSchedule> CityToCampusList = new ArrayList<>();
+
+        Calendar calendar = Calendar.getInstance();
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+
+        String[] scheduleTimes1 = {"07:30 AM", "08:00 AM", "09:45 AM", "10:30 AM", "2:50 PM", "03:50 PM", "08:30 PM"};
+        String[] scheduleTimes2 = {"08:45 AM", "09:20 AM", "01:30 PM", "2:30 PM", "4:00 PM", "05:30 PM", "09:30 PM"};
+        String[] scheduleHoliday1 = {"07:50 AM", "02:50 PM", "08:30 PM"};
+        String[] scheduleHoliday2 = {"09:00 AM", "04:00 PM", "09:30 PM"};
+
+        if (dayOfWeek == Calendar.FRIDAY || dayOfWeek == Calendar.SATURDAY) {
+            for (String time : scheduleHoliday1) {
+                TrainSchedule schedule = new TrainSchedule(time);
+                CityToCampusList.add(schedule);
+            }
+            for (String time : scheduleHoliday2) {
+                TrainSchedule schedule = new TrainSchedule(time);
+                CampusToCityList.add(schedule);
+            }
+        } else {
+            for (String time : scheduleTimes1) {
+                TrainSchedule schedule = new TrainSchedule(time);
+                CityToCampusList.add(schedule);
+            }
+            for (String time : scheduleTimes2) {
+                TrainSchedule schedule = new TrainSchedule(time);
+                CampusToCityList.add(schedule);
+            }
+        }
+
+
+        UpcomingTrain(CityToCampusList);
+        UpcomingTrain(CampusToCityList);
+
+
 
         trainFromCampusAdapter = new TrainAdapter(CampusToCityList);
         trainFromCityAdapter = new TrainAdapter(CityToCampusList);
@@ -65,26 +103,42 @@ public class TrainScheduleFragment extends Fragment {
         return view;
     }
 
-    private void storeTrainSchedules(List<TrainSchedule> CityToCampusList, List<TrainSchedule> CampusToCityList) {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.getDefault());
+    private void UpcomingTrain(List<TrainSchedule> scheduleList) {
+        Calendar calendar = Calendar.getInstance();
+        int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+        int currentMin = calendar.get(Calendar.MINUTE);
+        int amPm = calendar.get(Calendar.AM_PM);
 
-        // Create TrainSchedule objects for regular and holiday schedules
-        TrainSchedule schedule1 = new TrainSchedule("morning", "07:30 AM");
-        TrainSchedule schedule2 = new TrainSchedule("morning", "08:00 AM");
-        TrainSchedule schedule3 = new TrainSchedule("morning", "09:45 AM");
-        TrainSchedule schedule4 = new TrainSchedule("morning", "10:30 PM");
-        TrainSchedule schedule5 = new TrainSchedule("noon", "2:50 PM");
-        TrainSchedule schedule6 = new TrainSchedule("afternoon", "3:50 PM");
-        TrainSchedule schedule7 = new TrainSchedule("night", "8:30 PM");
+        TrainSchedule closestUpcomingTrain = null;
+        int closestHour = 24;
+        int closestMinute = 60;
 
-        databaseHelper.addTrainScheduleFromCity(schedule1);
-        databaseHelper.addTrainScheduleFromCity(schedule2);
-        databaseHelper.addTrainScheduleFromCity(schedule3);
-        databaseHelper.addTrainScheduleFromCity(schedule4);
-        databaseHelper.addTrainScheduleFromCity(schedule5);
-        databaseHelper.addTrainScheduleFromCity(schedule6);
-        databaseHelper.addTrainScheduleFromCity(schedule7);
+        for (TrainSchedule schedule : scheduleList) {
+            String time = schedule.getTime(); // Get the time string of the train schedule
+            String[] parts = time.split(":");
+            int hour = Integer.parseInt(parts[0].trim()); // Extract the hour from the time string
+            String[] minuteParts = parts[1].split(" ");
+            int minute = Integer.parseInt(minuteParts[0].trim());
+            String amOrPm = minuteParts[1].trim();
+            System.out.println(amOrPm);
+            if(amOrPm.equals("PM"))
+            {
+                hour+=12;
+                System.out.println(hour);
+            }
 
 
+            if ((hour > currentHour || (hour == currentHour && minute >= currentMin))
+                    && (hour < closestHour || (hour == closestHour && minute < closestMinute))) {
+                closestUpcomingTrain = schedule;
+                closestHour = hour;
+                closestMinute = minute;
+            }
+        }
+
+        if (closestUpcomingTrain != null) {
+            closestUpcomingTrain.setBackgroundColor("#90EE90");
+        }
     }
+
 }

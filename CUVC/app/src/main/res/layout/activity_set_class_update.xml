@@ -29,6 +29,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:orientation="vertical"
+                android:background="@color/softGoldColor"
                 >
 
                 <TextView
@@ -84,13 +85,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Start time"/>
 
-            <!-- End time input -->
-            <EditText
-                android:id="@+id/endTime1"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:hint="End time"/>
+
 
             <!-- Teacher input -->
             <EditText
@@ -134,13 +129,6 @@
                 android:layout_height="wrap_content"
                 android:hint="Start time"/>
 
-            <!-- End time input -->
-            <EditText
-                android:id="@+id/endTime2"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:hint="End time"/>
 
             <!-- Teacher input -->
             <EditText
@@ -184,13 +172,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Start time"/>
 
-            <!-- End time input -->
-            <EditText
-                android:id="@+id/endTime3"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:hint="End time"/>
+
 
             <!-- Teacher input -->
             <EditText
@@ -235,13 +217,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Start time"/>
 
-            <!-- End time input -->
-            <EditText
-                android:id="@+id/endTime4"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:hint="End time"/>
+
 
             <!-- Teacher input -->
             <EditText
@@ -285,13 +261,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Start time"/>
 
-            <!-- End time input -->
-            <EditText
-                android:id="@+id/endTime5"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:hint="End time"/>
+
 
             <!-- Teacher input -->
             <EditText

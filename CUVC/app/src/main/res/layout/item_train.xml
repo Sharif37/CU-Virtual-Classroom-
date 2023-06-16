@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="16dp"
+    android:padding="5dp"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -21,14 +21,7 @@
             android:orientation="vertical"
             android:background="@color/softGoldColor"
             android:padding="16dp">
-    <TextView
-        android:id="@+id/trainNameTextView"
-        android:text="shuttle "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        />
+
 
     <TextView
         android:id="@+id/trainScheduleTextView"

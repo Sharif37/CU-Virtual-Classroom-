@@ -22,6 +22,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.MemoryCategory;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.google.firebase.database.DatabaseReference;
@@ -56,7 +58,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.post_recycler_view, parent, false);
-         return new PostViewHolder(itemView);
+        return new PostViewHolder(itemView);
     }
 
 
@@ -66,23 +68,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         Post post = postList.get(position);
         holder.postTextView.setText(post.getText());
 
-        // load the image with Glide
-//        if (post.getImageUrl() != null && !post.getImageUrl().isEmpty()) {
-//            Glide.with(context)
-//                    .load(post.getImageUrl())
-//                    .apply(new RequestOptions().centerCrop())
-//                    .into(holder.postImageView);
-//        } else {
-//            holder.postImageView.setVisibility(View.GONE);
-//        }
 
-        //or this method for loading image
+       //  for loading image
 
         if (post.getImageUrl() != null && !post.getImageUrl().isEmpty()) {
+            holder.postImageView.setVisibility(View.VISIBLE);
+            Glide.get(context).setMemoryCategory(MemoryCategory.HIGH);
             Glide.with(context)
                     .load(post.getImageUrl())
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                    .skipMemoryCache(false)
                     .apply(new RequestOptions().override(Target.SIZE_ORIGINAL))
                     .into(holder.postImageView);
+
         } else {
             holder.postImageView.setVisibility(View.GONE);
         }
@@ -120,7 +118,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
         holder.postTimestampTextView.setText(formattedDate);
 
+
+        String currentUserId = new SharedPrefUtils(context).getCurrentUser();
+        if (post.getUserId().equals(currentUserId)) {
+            holder.deleteButton.setVisibility(View.VISIBLE);
+        } else {
+            holder.deleteButton.setVisibility(View.GONE);
+        }
+
         // set onClickListener for the delete button
+
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -197,4 +204,3 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
 
 }
-

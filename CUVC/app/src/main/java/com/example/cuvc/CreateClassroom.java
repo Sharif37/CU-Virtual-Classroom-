@@ -34,7 +34,7 @@ public class CreateClassroom extends AppCompatActivity {
     private Context context;
 
     public CreateClassroom() {
-        // Required empty public constructor
+
 
 
     }
@@ -129,13 +129,10 @@ public class CreateClassroom extends AppCompatActivity {
     public void createClassroomInFirebase(String classId, String className, String classDescription, String adminId, String classKey) {
 
         updateAdminData(adminId);
-        // Get a reference to the Firebase Realtime Database
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        // Create a new Classroom object
         Classroom classroom = new Classroom(classId, className, classDescription, adminId, classKey);
 
-        // Store the classroom object in the database under the "classrooms" node with the class ID as the key
         databaseReference.child("classroom").child(classId).setValue(classroom);
     }
 

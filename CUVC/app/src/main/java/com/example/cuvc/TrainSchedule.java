@@ -3,17 +3,18 @@ package com.example.cuvc;
 import java.time.LocalTime;
 
 public class TrainSchedule {
-    private String name;
+    private String Time;
+    private String backgroundColor;
     private String fromCampus,fromCity ;
 
-    public TrainSchedule(String name, String fromCampus) {
-        this.name = name;
-        this.fromCampus=fromCampus ;
+    public TrainSchedule(String Time) {
+        this.Time = Time;
+
 
     }
 
-    public String getName() {
-        return name;
+    public String getTime() {
+        return Time;
     }
 
     public String getFromCampus() {
@@ -30,5 +31,13 @@ public class TrainSchedule {
 
     public void setFromCity(String fromCity) {
         this.fromCity = fromCity;
+    }
+
+    public String getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    public void setBackgroundColor(String backgroundColor) {
+        this.backgroundColor = backgroundColor;
     }
 }

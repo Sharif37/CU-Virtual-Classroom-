@@ -1,10 +1,17 @@
-<androidx.cardview.widget.CardView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    >
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/post_card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
     android:focusable="true"
+    app:cardCornerRadius="5dp"
     android:foreground="?android:attr/selectableItemBackground"
     android:orientation="vertical">
 
@@ -12,6 +19,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#dddddd"
         android:orientation="vertical">
 
         <ImageButton
@@ -38,7 +46,7 @@
         <ImageView
             android:id="@+id/post_image_view"
             android:layout_width="match_parent"
-            android:layout_height="380dp"
+            android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:clickable="true"
             android:scaleType="centerCrop"
@@ -52,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="File name"
+
             android:textSize="14sp"
             android:visibility="visible"
             android:gravity="center_vertical"
@@ -61,6 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:background="#dddddd"
             android:orientation="horizontal">
 
             <TextView
@@ -88,3 +98,4 @@
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
+</LinearLayout>

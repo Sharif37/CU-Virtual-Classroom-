@@ -6,6 +6,7 @@ public class User {
     public String email;
     private String password;
     boolean isadmin ;
+    private String fcmToken;
 
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
@@ -23,6 +24,14 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getFcmToken() {
+        return fcmToken;
+    }
+
+    public void setFcmToken(String fcmToken) {
+        this.fcmToken = fcmToken;
     }
 
 

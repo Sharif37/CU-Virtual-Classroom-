@@ -122,35 +122,69 @@ public class Post_Activity extends AppCompatActivity  {
     }
 
 
+//    private void createPost() {
+//
+//        String text = postText.getText().toString();
+//
+//
+//        final String[] imageUrl = {null};
+//        final String[] fileUrl = {null};
+//
+//        if (imageUri != null) {
+//            uploadImage(imageUri, new OnSuccessListener<Uri>() {
+//                @Override
+//                public void onSuccess(Uri uri) {
+//                    imageUrl[0] = uri.toString();
+//                    savePostToDatabase(text, imageUrl[0], fileUrl[0]);
+//                }
+//            });
+//        } else if (fileUri != null) {
+//            uploadFile(fileUri, new OnSuccessListener<Uri>() {
+//                @Override
+//                public void onSuccess(Uri uri) {
+//                    fileUrl[0] = uri.toString();
+//                    savePostToDatabase(text, imageUrl[0], fileUrl[0]);
+//                }
+//            });
+//
+//        }
+//        else {
+//            savePostToDatabase(text, imageUrl[0], fileUrl[0]);
+//        }
+//    }
+
     private void createPost() {
-
         String text = postText.getText().toString();
-
-
         final String[] imageUrl = {null};
-        final String[] fileUrl = {null};
+        final String fileUrl=null;  // Change the type to String instead of String[]
 
         if (imageUri != null) {
             uploadImage(imageUri, new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
                     imageUrl[0] = uri.toString();
-                    savePostToDatabase(text, imageUrl[0], fileUrl[0]);
+                    checkPostComplete(text, imageUrl[0], fileUrl);
                 }
             });
-        } else if (fileUri != null) {
+        } else {
+            checkPostComplete(text, imageUrl[0], fileUrl);
+        }
+    }
+
+    private void checkPostComplete(final String text, final String imageUrl, final String fileUrl) {
+        if (fileUri != null) {
             uploadFile(fileUri, new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    fileUrl[0] = uri.toString();
-                    savePostToDatabase(text, imageUrl[0], fileUrl[0]);
+                    String fileUrl = uri.toString();  // Declare a new variable instead of modifying the method parameter
+                    savePostToDatabase(text, imageUrl, fileUrl);
                 }
             });
-
         } else {
-            savePostToDatabase(text, imageUrl[0], fileUrl[0]);
+            savePostToDatabase(text, imageUrl, fileUrl);
         }
     }
+
 
     private void uploadImage(Uri imageUri, OnSuccessListener<Uri> onSuccessListener) {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference("class/"+getCurrentClassKey()+"/posts").child(getCurrentUserId()).child("images").child(UUID.randomUUID().toString());

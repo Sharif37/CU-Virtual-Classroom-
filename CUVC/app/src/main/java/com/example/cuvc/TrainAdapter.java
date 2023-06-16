@@ -1,9 +1,11 @@
 package com.example.cuvc;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,8 +30,23 @@ public class TrainAdapter extends RecyclerView.Adapter<TrainAdapter.TrainViewHol
     @Override
     public void onBindViewHolder(@NonNull TrainViewHolder holder, int position) {
         TrainSchedule trainSchedule = trainSchedules.get(position);
-        holder.trainNameTextView.setText(trainSchedule.getName());
-        holder.trainScheduleTextView.setText(trainSchedule.getFromCity());
+        //holder.trainNameTextView.setText(trainSchedule.getName());
+
+        String backgroundColor = trainSchedule.getBackgroundColor();
+        System.out.println(backgroundColor);
+        if (backgroundColor != null) {
+            try {
+                int color = Color.parseColor(backgroundColor);
+                holder.itemView.setBackgroundColor(color);
+            } catch (IllegalArgumentException e) {
+
+               // holder.itemView.setBackgroundColor(Color.WHITE);
+            }
+        } else {
+            // Set a default background color if no specific color is set
+           // holder.itemView.setBackgroundColor(Color.WHITE);
+        }
+        holder.trainScheduleTextView.setText(trainSchedule.getTime());
     }
 
     @Override
@@ -44,7 +61,7 @@ public class TrainAdapter extends RecyclerView.Adapter<TrainAdapter.TrainViewHol
 
         public TrainViewHolder(@NonNull View itemView) {
             super(itemView);
-            trainNameTextView = itemView.findViewById(R.id.trainNameTextView);
+            //trainNameTextView = itemView.findViewById(R.id.trainNameTextView);
             trainScheduleTextView = itemView.findViewById(R.id.trainScheduleTextView);
         }
     }
