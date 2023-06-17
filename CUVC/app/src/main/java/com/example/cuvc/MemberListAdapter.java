@@ -29,10 +29,19 @@ public class MemberListAdapter extends ArrayAdapter<Member> {
         Member currentMember = memberList.get(position);
         TextView nameTextView = listItem.findViewById(R.id.member_name);
         TextView idTextView = listItem.findViewById(R.id.member_id);
+        TextView adminTitleTextView = listItem.findViewById(R.id.admin_title); // Assuming you have a TextView for admin title in your member_list_item layout
 
         nameTextView.setText(currentMember.getName());
         idTextView.setText(currentMember.getId());
 
+        // Check if the member is an admin and display the admin title if true
+        if (currentMember.isAdmin()) {
+            adminTitleTextView.setVisibility(View.VISIBLE);
+        } else {
+            adminTitleTextView.setVisibility(View.GONE);
+        }
+
         return listItem;
     }
+
 }

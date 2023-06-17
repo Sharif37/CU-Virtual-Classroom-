@@ -10,31 +10,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cc004ac-6905-41a4-969a-7ef59163f064" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/AboutUs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Developer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/DeveloperAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_account_circle_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_android_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/facebook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/fb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/himg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_copy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/img.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/linkedin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ln.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rabby.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rakib.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/sharif.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/aboutus_item.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_about_us.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/BusScheduleFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/BusScheduleFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/ClassScheduleAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/ClassScheduleAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/ClassScheduleItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/ClassScheduleItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/AdminFormActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/AdminFormActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/BaseActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Class_Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Class_Member.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/CreateClassroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/CreateClassroom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/DatabaseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/PostAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/PostAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Post_Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Post_Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Enter_Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Enter_Class.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/MemberListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/MemberListAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/PostViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/PostViewModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/SharedPrefUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/SharedPrefUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TrainAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TrainAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TrainSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TrainSchedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TrainScheduleFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/TrainScheduleFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/setClassUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/setClassUpdate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-v31/activity_set_class_update.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_display_class_key.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_display_class_key.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_set_class_update.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_set_class_update.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/class_schedule_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/class_schedule_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_bus_schedule.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_bus_schedule.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/classroomActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/classroomActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/register.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cuvc/register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_class_member.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_class_member.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_createclassroom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_createclassroom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/header_lay.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/header_lay.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_train.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_train.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/post_recycler_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/post_recycler_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/member_list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/member_list_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/navigation_items.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/navigation_items.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../abstract.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../bibliography.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../conceptualmodeling.txt" beforeDir="false" />
@@ -96,33 +112,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "android-custom-viewC:/Program Files/Android/Android Studio/plugins/caches/modules-2/files-2.1/com.google.android.material/material/1.5.0/8d3b87c7463f55053836b805e014cb238f64757a/material-1.5.0-sources.jar!/com/google/android/material/navigation/NavigationView.java_SELECTED": "NavigationView",
-    "android-custom-viewC:/Users/shari/AppData/Local/Android/Sdk/sources/android-33/android/widget/ImageButton.java_SELECTED": "ImageButton",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable": "ALL",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_directory_selection": "C:/Users/shari/AndroidStudioProjects/CU-Virtual-Classroom-/CUVC/app/src/main/res/mipmap-hdpi",
-    "last_opened_file_path": "D:/",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.intentionPowerPack",
-    "show.do.not.copy.http.proxy.settings.to.gradle": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;android-custom-viewC:/Program Files/Android/Android Studio/plugins/caches/modules-2/files-2.1/com.google.android.material/material/1.5.0/8d3b87c7463f55053836b805e014cb238f64757a/material-1.5.0-sources.jar!/com/google/android/material/navigation/NavigationView.java_SELECTED&quot;: &quot;NavigationView&quot;,
+    &quot;android-custom-viewC:/Users/shari/AppData/Local/Android/Sdk/sources/android-33/android/widget/ImageButton.java_SELECTED&quot;: &quot;ImageButton&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable&quot;: &quot;ALL&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/shari/AndroidStudioProjects/CU-Virtual-Classroom-/CUVC/app/src/main/res/drawable&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/shari/AndroidStudioProjects/CU-Virtual-Classroom-/CUVC/app/src/main/res/drawable&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.intentionPowerPack&quot;,
+    &quot;show.do.not.copy.http.proxy.settings.to.gradle&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="android.template.-363218791">
       <recent name="com.example.cuvc" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\shari\AndroidStudioProjects\CU-Virtual-Classroom-\CUVC\app\src\main\res\drawable" />
       <recent name="C:\Users\shari\AndroidStudioProjects\CUVC\app\src\main\res\drawable" />
+    </key>
+    <key name="android.template.1566355409">
+      <recent name="com.example.cuvc" />
     </key>
     <key name="android.template.-1927975176">
       <recent name="com.example.cuvc" />

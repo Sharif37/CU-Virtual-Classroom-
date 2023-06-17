@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -69,6 +70,7 @@ public class AdminFormActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveEvent();
+
             }
         });
     }
@@ -120,25 +122,29 @@ public class AdminFormActivity extends AppCompatActivity {
         String eventName = eventNameEditText.getText().toString().trim();
         String eventDate = dateEditText.getText().toString().trim();
         String eventTime = timeEditText.getText().toString().trim();
+        if (eventName.isEmpty() || eventDate.isEmpty() || eventTime.isEmpty()) {
+            Toast.makeText(this, "Please fill in all the fields.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            // current date and time
+            Calendar currentDateTime = Calendar.getInstance();
+            SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm", Locale.getDefault());
+            String creationDate = sdfDate.format(currentDateTime.getTime());
+            String creationTime = sdfTime.format(currentDateTime.getTime());
 
-        // current date and time
-        Calendar currentDateTime = Calendar.getInstance();
-        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm", Locale.getDefault());
-        String creationDate = sdfDate.format(currentDateTime.getTime());
-        String creationTime = sdfTime.format(currentDateTime.getTime());
+            // Save event
+            String eventId = databaseReference.push().getKey();
+            Event event = new Event(eventId, eventName, eventDate, eventTime, creationDate, creationTime);
+            databaseReference.child(eventId).setValue(event);
 
-        // Save event
-        String eventId = databaseReference.push().getKey();
-        Event event = new Event(eventId, eventName, eventDate, eventTime, creationDate, creationTime);
-        databaseReference.child(eventId).setValue(event);
+            // Clear
+            eventNameEditText.setText("");
+            dateEditText.setText("");
+            timeEditText.setText("");
+            Toast.makeText(AdminFormActivity.this, "Save Event Successfully", Toast.LENGTH_SHORT).show();
 
-        // Clear
-        eventNameEditText.setText("");
-        dateEditText.setText("");
-        timeEditText.setText("");
-
-
+        }
     }
 
 }

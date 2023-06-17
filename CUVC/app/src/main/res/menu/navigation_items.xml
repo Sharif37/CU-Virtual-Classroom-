@@ -26,6 +26,10 @@
         android:title="Settings"
         android:icon="@drawable/ic_baseline_settings_24"/>
     <item
+    android:id="@+id/aboutus"
+    android:title="About us"
+    android:icon="@drawable/baseline_android_24"/>
+    <item
         android:id="@+id/opLogout"
         android:title="Logout"
         android:icon="@drawable/ic_baseline_logout_24"/>

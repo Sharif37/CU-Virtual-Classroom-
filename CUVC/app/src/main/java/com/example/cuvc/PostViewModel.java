@@ -33,15 +33,15 @@ public class PostViewModel extends ViewModel {
     public PostViewModel(SharedPreferences sharedPreferences) {
         // Retrieve the value of classCode from SharedPreferences
         classCode = sharedPreferences.getString("classCode", "");
-        System.out.println("ClassCode: "+classCode);
+
     }
 
     public LiveData<List<Post>> getPosts() {
         if (mPosts == null) {
             mPosts = new MutableLiveData<>();
-            if (classCode.equals("hd03h9")) {
+
                 loadPosts();
-            }
+
         }
         return mPosts;
     }

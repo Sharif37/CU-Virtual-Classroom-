@@ -175,7 +175,7 @@ public class register extends AppCompatActivity implements DatabaseHelper.OnData
         } else {
             // User does not exist
             db.insertUser(id, name, email, pass);
-            db.InsertUserInFirebaseDatabase(id, name, email, pass, isAdmin ,register.this);
+            db.InsertUserInFirebaseDatabase(id, name, email, pass, false ,register.this);
         }
     }
 

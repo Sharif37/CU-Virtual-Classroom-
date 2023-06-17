@@ -1,8 +1,0 @@
-\section{Validation} \label{sec:val}
-After launching our Android App CUVC we have received quite good feedbacks.Here some user review of our Android App. \\
-User farnandes review-
-\textit{It is perfect for those who, even in times of isolation, want to keep their studies, have good sound and image transmission and several tools that help and improve the user experience.}\\ \newline
-User Krishna SHari review -
-
-\textit{I love this app,as since I am a student myself,this app has helped me a lot with managing my studies and classwork,even on the go! I instantly get a notification whenever CR posts something!Overall,this is one of the best apps for making and joining  a virtual classroom}
-\clearpage

@@ -24,20 +24,26 @@ public class MainActivity extends AppCompatActivity {
         //FirebaseApp.initializeApp(this);
 
 
+
         sManager=new sessionManager(this);
 
              if (sManager.exitSession()) {
                  Intent intent = new Intent(this, Home.class);
                  startActivity(intent);
+                 finish();
 
 
              } else {
                  Intent intent = new Intent(this, LoginActivity.class);
                  startActivity(intent);
+                 finish();
              }
 
 
     }
+
+
+
 
 
 

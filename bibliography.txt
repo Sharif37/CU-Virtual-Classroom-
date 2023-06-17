@@ -1,7 +1,0 @@
-\begin{enumerate}
-\item De Witte, K., Rogge, N., & Gallardo-Echenique, E. E. (2017). Educational affordances of virtual worlds: Mapping a landscape of the present and future. British Journal of Educational Technology, 48(1), 39-55.
-\item Gallagher, S. A., & Garrett, A. L. (2018). Developing and evaluating a virtual classroom for synchronous distance education. Journal of Educators Online, 15(1), 1-15.
-\item https://stackoverflow.com/
-\item https://www.youtube.com/@anisul-islam
-\item we collect various information from chatgpt
-\end{enumerate}

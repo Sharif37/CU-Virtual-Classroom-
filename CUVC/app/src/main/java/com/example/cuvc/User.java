@@ -5,20 +5,21 @@ public class User {
     public String name;
     public String email;
     private String password;
-    boolean isadmin ;
+    public  boolean admin;
     private String fcmToken;
 
     public User() {
-        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+
     }
 
-    public User(String id, String name, String email, String password,boolean isadmin) {
+    public User(String id, String name, String email, String password, boolean admin) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
-        this.isadmin=isadmin ;
+        this.admin = admin;
     }
+
 
 
 

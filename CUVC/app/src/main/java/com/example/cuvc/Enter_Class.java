@@ -73,7 +73,7 @@ public class Enter_Class extends AppCompatActivity {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         className = snapshot.child("className").getValue(String.class);
                          classDescription = snapshot.child("classDescription").getValue(String.class);
-                        // Do something with className and classDescription
+
                     }
 
                     //Toast.makeText(Enter_Class.this, className+"", Toast.LENGTH_SHORT).show();

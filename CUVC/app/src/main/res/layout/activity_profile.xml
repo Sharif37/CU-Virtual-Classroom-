@@ -1,9 +1,74 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<!-- activity_profile.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:elevation="4dp"
+        android:radius="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/softGoldColor"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/profileImageView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_account_circle_24"/>
+
+            <TextView
+                android:id="@+id/usernameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@id/profileImageView"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/classNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/usernameTextView"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/profileImageView"
+                android:textSize="16sp"
+                 />
+
+            <TextView
+                android:id="@+id/classdes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/classNameTextView"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/profileImageView"
+                android:textSize="14sp"
+                 />
+
+            <TextView
+                android:id="@+id/classKeyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/classdes"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/profileImageView"
+                android:textSize="14sp"
+                android:visibility="gone"
+                />
 
 
-</ScrollView>
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

@@ -3,17 +3,15 @@ package com.example.cuvc;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.example.cuvc.Member;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -55,20 +53,38 @@ public class Class_Member extends AppCompatActivity {
 //        cursor.close();
 //        db.close();
 
-           getMemberInfirebase();
 
-        // Create a new adapter to display the member list
+
+             SharedPrefUtils s=new SharedPrefUtils(this);
+           getMemberFirebase(s.getClassKey());
+       // Toast.makeText(this, s.getClassKey()+"", Toast.LENGTH_SHORT).show();
+
+
         memberListAdapter = new MemberListAdapter(this, memberList);
-
-        // Set the adapter for the member list view
         memberListView.setAdapter(memberListAdapter);
+
+
+        memberListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Member clickedMember = memberList.get(position);
+                SharedPrefUtils s = new SharedPrefUtils(getApplicationContext());
+
+
+                if (s.isAdmin() && !clickedMember.isAdmin()) {
+                    showMakeAdminMenu(clickedMember);
+                }
+            }
+        });
+
 
 
 
     }
 
 
-    public void getMemberInfirebase() {
+    public void getMemberFirebase(final String key) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
         memberList = new ArrayList<>();
 
@@ -78,10 +94,13 @@ public class Class_Member extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String memberId = snapshot.child("id").getValue(String.class);
                     String memberName = snapshot.child("name").getValue(String.class);
-                    Member member = new Member(memberId, memberName);
+                    String memberClassId = snapshot.child("classkey").getValue(String.class);
+                    boolean isAdmin=snapshot.child("admin").getValue(boolean.class);
 
-                    memberList.add(member);
-
+                    if (memberClassId != null && memberClassId.equals(key)) {
+                        Member member = new Member(memberId, memberName,isAdmin);
+                        memberList.add(member);
+                    }
                 }
 
                 memberListAdapter.notifyDataSetChanged();
@@ -93,6 +112,31 @@ public class Class_Member extends AppCompatActivity {
             }
         });
     }
+
+    private void showMakeAdminMenu(final Member clickedMember) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Make Admin")
+                .setMessage("Do you want to make this member an admin?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        makeMemberAdmin(clickedMember);
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+    private void makeMemberAdmin(Member member) {
+        member.setAdmin(true);
+        CreateClassroom.updateAdminData(member.getId());
+        memberListAdapter.notifyDataSetChanged();
+    }
+
+
+
+
+
 
 
 

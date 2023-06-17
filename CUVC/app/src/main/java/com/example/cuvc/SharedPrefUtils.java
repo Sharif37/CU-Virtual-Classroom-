@@ -22,5 +22,9 @@ public class SharedPrefUtils {
     public String getCurrentUser(){
         return preferences.getString("currentUser", "");
     }
+    public boolean isAdmin()
+    {
+        return preferences.getBoolean("isAdmin",false);
+    }
 }
 

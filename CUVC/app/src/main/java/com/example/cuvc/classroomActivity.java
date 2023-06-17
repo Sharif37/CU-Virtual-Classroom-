@@ -40,7 +40,9 @@ public class classroomActivity extends AppCompatActivity {
     private List<Post> postList;
     private RecyclerView recyclerView;
     private PostAdapter postAdapter;
-    static String classkey ;
+    static String classKey ;
+
+
 
 
 
@@ -61,7 +63,8 @@ public class classroomActivity extends AppCompatActivity {
         String className = preferences.getString("className", "");
         String classDescription = preferences.getString("classDescription", "");
         String currentUser = preferences.getString("currentUser", "");
-         classkey=preferences.getString("classCode","");
+         classKey=preferences.getString("classCode","");
+
 
         //method to check is it admin or not
         isYouAdmin(currentUser);
@@ -178,6 +181,7 @@ public class classroomActivity extends AppCompatActivity {
     }
 
     private void Classmates() {
+
 
         Intent intent = new Intent(this, Class_Member.class);
         startActivity(intent);

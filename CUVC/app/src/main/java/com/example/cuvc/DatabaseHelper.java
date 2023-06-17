@@ -210,7 +210,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void createAdminrule(String adminId, String adminName, String adminEmail) {
+    public void createAdminRole(String adminId, String adminName, String adminEmail) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         //insert new session into database
@@ -224,33 +224,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public void InsertUserInFirebaseDatabase(String id, String name, String email, String password, boolean isAdmin, OnDataInsertedListener listener) {
-        // Get a reference to the Firebase Realtime Database
+
+    public void InsertUserInFirebaseDatabase(String id, String name, String email, String password, boolean admin, OnDataInsertedListener listener) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        // Create a new user object
-        User user = new User(id, name, email, password, isAdmin);
 
-        // Store the user object in the database under the "users" node with the user ID as the key
-        databaseReference.child("users").child(id).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                // Notify the listener that the data was inserted successfully
-                listener.onDataInserted(true);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                // Notify the listener that the data insertion failed
-                listener.onDataInserted(false);
-            }
-        });
+        User user = new User(id, name, email, password, false);
+
+        databaseReference.child("users").child(id).setValue(user)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        listener.onDataInserted(true);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        listener.onDataInserted(false);
+                    }
+                });
     }
+
+
+
     public void checkIfUserExists(String userId, OnDataInsertedListener listener) {
-        // Get a reference to the Firebase Realtime Database
+
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        // Check if a child node with the given user ID exists under the "users" node
         databaseReference.child("users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

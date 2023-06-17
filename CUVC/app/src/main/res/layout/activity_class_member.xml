@@ -14,7 +14,7 @@
             android:layout_height="match_parent"
             android:divider="@color/black"
             android:dividerHeight="2dp"
-            android:listSelector="@color/purple_200"
+            android:listSelector="@color/gray"
             android:layout_marginLeft="1dp"
             android:textAlignment="center"
             android:contextClickable="true"

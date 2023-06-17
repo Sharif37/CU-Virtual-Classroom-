@@ -78,6 +78,11 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
             startActivity(intent);
 
         }
+        if(item.getItemId()==R.id.aboutus)
+        {
+            intent=new Intent(this,AboutUs.class) ;
+            startActivity(intent);
+        }
         if(item.getItemId()==R.id.opProfile)
         {
             intent=new Intent(this,profile.class) ;
@@ -107,10 +112,14 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
 
     @Override
     public void onBackPressed() {
+
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
+        finish();
     }
+
+
 }

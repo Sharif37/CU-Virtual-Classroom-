@@ -1,8 +1,0 @@
-%abstract.tex
-
-\begin{abstract}
-The Virtual Classroom Android App project is aimed to develop a database application system by applying the theories, methodologies, tools, and technologies learned in Database Management System course. The motivation behind this project is to provide an alternative solution to traditional physical classrooms. This project addresses the need for a virtual classroom environment for students where they can join one classroom, receive class updates, schedule transportation,access class resources and upcoming events, and view semester information such as course lists, syllabus etc . The current solutions have limitations in terms of flexibility and scheduling. The approach used to fill this gap is the implementation of a virtual classroom android app using the system development process that includes the requirement
-gathering and analysis, database modelling, system architecture, implementation and validation. The solution provided by this system is a virtual classroom android app that allows students to join one virtual classroom, receive class updates, schedule transportation, access class resources, and upcoming events, and view semester information such as course lists, syllabus, etc. The solution will be evaluated based on its usability and effectiveness. The significance of this project is that
-it allows students to continue their education from anywhere, at any time. However, the limitation of this project is that it's for the android platform only, and for future work, we can enhance the app by adding more features and making it available for other platforms as well.
-\end{abstract}
-\clearpage

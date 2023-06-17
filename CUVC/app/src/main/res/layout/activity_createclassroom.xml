@@ -1,10 +1,12 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="20dp"
+    android:orientation="vertical"
     >
 
     <LinearLayout
+        android:id="@+id/layoutLinear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -26,6 +28,7 @@
             android:text="Description"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -34,15 +37,43 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+
         <Button
             android:id="@+id/Class_button"
-            android:text="Create Class"
-           android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="createClass" />
+            android:layout_gravity="center"
+            android:onClick="createClass"
+            android:text="Create Class" />
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutLinear"
+        android:layout_marginTop="100dp"
+        >
 
-</LinearLayout>
+
+
+        <TextView
+            android:id="@+id/classKey_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Class key: "
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/copyIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_copy"
+            android:layout_alignRight="@+id/classKey_create"
+            android:padding="8dp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

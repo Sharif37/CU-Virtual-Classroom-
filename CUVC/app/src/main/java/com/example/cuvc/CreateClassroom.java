@@ -1,13 +1,18 @@
 package com.example.cuvc;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +36,7 @@ public class CreateClassroom extends AppCompatActivity {
     private EditText mClassNameEditText;
     private EditText mClassDescriptionEditText;
     private DatabaseHelper dbHelper;
+    TextView setClassKey ;
     private Context context;
 
     public CreateClassroom() {
@@ -58,6 +64,8 @@ public class CreateClassroom extends AppCompatActivity {
         mClassNameEditText = findViewById(R.id.class_name);
         mClassDescriptionEditText = findViewById(R.id.class_description);
         dbHelper = new DatabaseHelper(context);
+        setClassKey=findViewById(R.id.classKey_create);
+
         Button createClassButton = findViewById(R.id.Class_button);
         createClassButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +75,8 @@ public class CreateClassroom extends AppCompatActivity {
                     clearClassroomData();
                 }
                 createClass();
+                mClassNameEditText.setText("");
+                mClassDescriptionEditText.setText("");
             }
         });
 
@@ -104,6 +114,7 @@ public class CreateClassroom extends AppCompatActivity {
 
 
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
+        /*
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
         String query = "SELECT ID FROM sessions LIMIT 1";
@@ -112,14 +123,18 @@ public class CreateClassroom extends AppCompatActivity {
         if (cursor != null && cursor.moveToFirst()) {
             adminId = cursor.getString(cursor.getColumnIndex("ID"));
             cursor.close();
-        }
+        }*/
+
+        SharedPrefUtils s=new SharedPrefUtils(this);
+        adminId=s.getCurrentUser();
 
 
         databaseHelper.createClassroom(ClassId, className, classDescription, adminId, generateClassKey(6));
         createClassroomInFirebase(ClassId, className, classDescription, adminId, generateClassKey(6));
 
 
-        finish();
+
+
     }
 
     private String generateSessionId() {
@@ -134,10 +149,36 @@ public class CreateClassroom extends AppCompatActivity {
         Classroom classroom = new Classroom(classId, className, classDescription, adminId, classKey);
 
         databaseReference.child("classroom").child(classId).setValue(classroom);
+
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("classId", classId);
+        editor.apply();
+
+        String text=setClassKey.getText().toString();
+        setClassKey.setText(text+classKey);
+        setClassKey.setVisibility(View.VISIBLE);
+
+        ImageView copy = findViewById(R.id.copyIcon);
+        copy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                // Copy classKey to clipboard
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("Class Key", classKey);
+                clipboard.setPrimaryClip(clip);
+
+                Toast.makeText(getApplicationContext(), "Class Key copied to clipboard", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
 
-    public void updateAdminData(String userId)
+    public static void updateAdminData(String userId)
     {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference usersRef = database.getReference("users");
