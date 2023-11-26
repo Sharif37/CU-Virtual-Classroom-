@@ -1,42 +1,50 @@
-# CU Virtual Classroom
+# Classmate Android App
 
-CU Virtual Classroom is a mobile app that allows students at CU to access class updates, resources, and transportation schedules, as well as track attendance and grades.
+![Classmate Logo](https://github.com/Sharif37/CU-Virtual-Classroom-/blob/main/CUVC/app/src/main/res/drawable/logo.png)
 
-## Prerequisites
+## Overview
 
-- Android device running version 5.0 or higher
-- Internet connection
-
-## Installation
-
-1. Download the CU Virtual Classroom app from the Google Play Store.
-2. Open the app and create an account using your CU email address.
-3. Once logged in, you will have access to all of the app's features.
-
-## Usage
-
-- To view class updates and announcements, tap the "Classes" tab at the bottom of the screen.
-- To access class resources, tap on a specific class and then tap the "Resources" tab.
-- To view transportation schedules, tap the "Transportation" tab.
-- To track attendance and grades, tap the "Attendance" tab.
+I'm excited to share the completion of my DBMS course project, the "Classmate" Android app. This project is designed to meet the daily needs of students within their classes, promoting a sense of community among classmates.
 
 ## Features
 
-- View class updates and announcements
-- Access class resources such as notes, slides, and assignments
-- View transportation schedules and receive updates
-- Track attendance and grades for each class
+- **Class Schedule:** View your daily class schedules conveniently.
+- **Class Resources:** Access class materials and resources easily.
+- **Transportation Info:** Get information on transportation options.
+- **Event Reminders:** Receive reminders for upcoming events, CTs, and seminars.
+- **Communication Hub:** Post and share class-related information for seamless communication.
 
-## Troubleshooting
+## Tech Stack
 
-- If you are having trouble logging in, make sure you are using the correct CU email address and password.
-- If you are unable to access certain resources or features, make sure you are enrolled in the corresponding class.
-- If you are experiencing any other issues, please contact our support team at support@cu-virtual-classroom.com.
+- **Development Platform:** Android (Java)
+- **Remote Database:** Firebase
+- **Local Database:** SQLite
 
-## Credits
+## Challenges
 
-- This app uses the [Android Support Libraries](https://developer.android.com/topic/libraries/support-library/) for compatibility across a range of Android devices.
+Developing "Classmate" presented various challenges, including learning and implementing both relational-based and object-oriented-based database concepts. Efficient data fetching and maintenance were key hurdles that we overcame through continuous learning.
 
-## License
+## Development Process
 
-CU Virtual Classroom is released under the [MIT License](https://opensource.org/licenses/MIT) .
+1. **Requirements Gathering:** Gathered project requirements.
+2. **E-R Diagram:** Created a normalized Entity-Relationship diagram.
+3. **Database Implementation:** Utilized Firebase and SQLite for remote and local databases.
+4. **Model Conversion:** Converted the relational model to an object-based model.
+5. **Supervisor Guidance:** Received valuable guidance from our supervisor at every step.
+
+## Acknowledgements
+
+I would like to express my gratitude to our supervisor for exceptional guidance throughout the development process.
+
+## Learning Experience
+
+While the project posed occasional challenges, it was a highly rewarding learning experience. The development of "Classmate" equipped us with valuable knowledge and skills.
+
+## How to Use
+
+1. Clone the repository.
+2. Open the project in Android Studio.
+3. Configure Firebase credentials.
+4. Run the app on an Android emulator or device.
+
+Happy coding!
